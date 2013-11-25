@@ -29,15 +29,15 @@
             <div class="header">
                 <h3 class="text-muted">TemplateAnalytics</h3>
                 <ul class="nav nav-tabs nav-justified">
-                    <li><a href="#">Chart</a></li>
-                    <li class="active"><a href="#">Grid</a></li>
+                    <li class="active"><a href="#">Chart</a></li>
+                    <li><a href="#">Grid</a></li>
                     <li><a href="#">Map</a></li>
                 </ul>
             </div>
 
             <div class="row"></div>
                 <div class="col-md-3">
-                    <div class="bs-sidebar hidden-print affix-top" role="complementary">
+                    <div class="hidden-print affix-top" role="complementary">
                         <ul class="nav bs-sidenav">
                             <a href="#" class="list-group-item active">Push Notification</a>
                             <a href="#" class="list-group-item">VIP Card</a>
@@ -59,11 +59,11 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Start Time</label>
                             <div class="col-sm-4">
-                                <input id="start-time" type="text" class="form-control">
+                                <input id="start-time" type="text" class="form-control" placeholder="Specify a time or leave empty">
                             </div>
                             <label class="col-sm-2 control-label">End Time</label>
                             <div class="col-sm-4">
-                                <input id="end-time" type="text" class="form-control">
+                                <input id="end-time" type="text" class="form-control" placeholder="Specify a time or leave empty">
                             </div>
                         </div>
                         <div class="row">
@@ -72,7 +72,31 @@
                     </form>
                     <br><br>
 
-                    <div id="view" class="jumbotron">
+                    <div id="view">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">GRID</div>
+                            <div class="panel-body">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Message Content</th>
+                                            <th>Rate</th>
+                                            <th>Push Time</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Chart</div>
+                            <div class="panel-body"></div>
+                        </div>
+                            <div class="panel panel-default">
+                            <div class="panel-heading">Map</div>
+                            <div class="panel-body"></div>
+                        </div>
                     </div>
                 </div>
             </div>
