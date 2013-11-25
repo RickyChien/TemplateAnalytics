@@ -28,18 +28,17 @@
         <div class="container">
             <div class="header">
                 <h3 class="text-muted">TemplateAnalytics</h3>
-                
             </div>
 
             <div class="row"></div>
                 <div class="col-md-3">
                     <div class="hidden-print affix-top" role="complementary">
                         <ul class="nav bs-sidenav">
-                            <a href="#" class="list-group-item active">Push Notification</a>
-                            <a href="#" class="list-group-item">VIP Card</a>
-                            <a href="#" class="list-group-item">Advertisement</a>
-                            <a href="#" class="list-group-item">Top</a>
-                            <a href="#" class="list-group-item">Search Bar Hint</a>
+                            <a href="push_notification" class="list-group-item active">Push Notification</a>
+                            <a href="vip_card" class="list-group-item">VIP Card</a>
+                            <a href="advertisement" class="list-group-item">Advertisement</a>
+                            <a href="top" class="list-group-item">Top</a>
+                            <a href="search_bar_hint" class="list-group-item">Search Bar Hint</a>
                         </ul>
                     </div>
                 </div>
@@ -70,12 +69,12 @@
                     </div>
 
                     <ul class="nav nav-tabs nav-justified">
-                        <li><a href="#">Chart</a></li>
-                        <li class="active"><a href="#">Grid</a></li>
-                        <li><a href="#">Map</a></li>
+                        <li><a href="chart">Chart</a></li>
+                        <li class="active"><a href="grid">Grid</a></li>
+                        <li><a href="map">Map</a></li>
                     </ul>
 
-                    <div id="view" class="well">
+                    <div class="well">
                         <div class="panel panel-info">
                             <div class="panel-heading">Grid</div>
                             <div class="panel-body">
@@ -88,12 +87,9 @@
                                             <th>Push Time</th>
                                         </tr>
                                     </thead>
+                                    <tbody></tbody>
                                 </table>
                             </div>
-                        </div>
-                        <div class="row">
-                            <input type="button" class="btn btn-primary col-md-offset-3" value="Compare with Chart">
-                            <input type="button" class="btn btn-primary col-md-offset-1" value="Compare with Map">
                         </div>
                     </div>
                 </div>
@@ -111,6 +107,7 @@
         <!-- endbuild -->
 
         <!-- build:js scripts/main.js -->
+        <script src="scripts/gridview.js"></script>
         <script src="scripts/main.js"></script>
         <!-- endbuild -->
 
