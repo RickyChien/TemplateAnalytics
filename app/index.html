@@ -12,6 +12,7 @@
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
         <!-- build:css(.tmp) styles/main.css -->
         <link rel="stylesheet" href="bower_components/jquery-ui/themes/flick/jquery-ui.css">
+        <link rel="stylesheet" href="bower_components/jquery-ui/themes/jquery-ui-timepicker-addon.css">
         <link rel="stylesheet" href="styles/main.css">
         <!-- endbuild -->
         <!-- build:js scripts/vendor/modernizr.js -->
@@ -35,26 +36,43 @@
             </div>
 
             <div class="row"></div>
-                <div class="list-group col-md-3">
-                    <a href="#" class="list-group-item active">Push Notification</a>
-                    <a href="#" class="list-group-item">VIP Card</a>
-                    <a href="#" class="list-group-item">Advertisement</a>
-                    <a href="#" class="list-group-item">Top</a>
-                    <a href="#" class="list-group-item">Search Bar Hint</a>
+                <div class="col-md-3">
+                    <div class="bs-sidebar hidden-print affix-top" role="complementary">
+                        <ul class="nav bs-sidenav">
+                            <a href="#" class="list-group-item active">Push Notification</a>
+                            <a href="#" class="list-group-item">VIP Card</a>
+                            <a href="#" class="list-group-item">Advertisement</a>
+                            <a href="#" class="list-group-item">Top</a>
+                            <a href="#" class="list-group-item">Search Bar Hint</a>
+                        </ul>
+                    </div>
                 </div>
 
-                <div id="view" class="jumbotron col-md-9 ">
-                    <p class="row">
-                        <input class="col-md-5" type="text" placeholder="Enter a content keyword">
-                    </p>
-                    <div class="row">
-                        <p class="col-md-3">Start Time:</p>
-                        <input id="start-time" type="text" class="col-md-3">
-                        <p class="col-md-3">End Time:</p>
-                        <input id="end-time" type="text" class="col-md-3">
-                    </div>
-                    <div>
-                        <input type="submit" value="Search">
+                <div class="col-md-9">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Search</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" type="text" placeholder="Enter a content keyword">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Start Time</label>
+                            <div class="col-sm-4">
+                                <input id="start-time" type="text" class="form-control">
+                            </div>
+                            <label class="col-sm-2 control-label">End Time</label>
+                            <div class="col-sm-4">
+                                <input id="end-time" type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <input class="btn btn-primary col-md-2 col-md-offset-5" type="submit" value="Search">
+                        </div>
+                    </form>
+                    <br><br>
+
+                    <div id="view" class="jumbotron">
                     </div>
                 </div>
             </div>
@@ -65,6 +83,8 @@
         <!-- bower:js -->
         <script src="bower_components/jquery/jquery.js"></script>
         <script src="bower_components/jquery-ui/ui/jquery-ui.js"></script>
+        <script src="bower_components/jquery-ui/ui/jquery-ui-timepicker-addon.js"></script>
+        <script src="bower_components/jquery-ui/ui/jquery-ui-sliderAccess.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 

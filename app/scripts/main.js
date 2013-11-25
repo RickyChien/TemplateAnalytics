@@ -1,2 +1,2 @@
-$('#start-time').datepicker();
-$('#end-time').datepicker();
+$('#start-time').datetimepicker();
+$('#end-time').datetimepicker();
