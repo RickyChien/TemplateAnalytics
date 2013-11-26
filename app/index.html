@@ -69,13 +69,19 @@
                     </div>
 
                     <ul class="nav nav-tabs nav-justified">
-                        <li><a href="chart">Chart</a></li>
-                        <li class="active"><a href="grid">Grid</a></li>
-                        <li><a href="map">Map</a></li>
+                        <li><a id="chart-tab" href="#" data-toggle="tab">Chart</a></li>
+                        <li class="active"><a id="grid-tab" href="#" data-toggle="tab">Grid</a></li>
+                        <li><a id="map-tab" href="#" data-toggle="tab">Map</a></li>
                     </ul>
 
                     <div class="well">
-                        <div class="panel panel-info">
+                        <div id="chart" class="panel panel-info">
+                            <div class="panel-heading">Chart</div>
+                            <div class="panel-body">
+                            </div>
+                        </div>
+
+                        <div id="grid" class="panel panel-info">
                             <div class="panel-heading">Grid</div>
                             <div class="panel-body">
                                 <table id="grid-data" class="table">
@@ -89,6 +95,13 @@
                                     </thead>
                                     <tbody></tbody>
                                 </table>
+                            </div>
+                        </div>
+
+                        <div id="map" class="panel panel-info">
+                            <div class="panel-heading">Map</div>
+                            <div class="panel-body">
+                                <iframe width="720" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.tw/maps/ms?ie=UTF8&amp;oe=UTF8&amp;msa=0&amp;msid=207951997222870335324.0004821ba08f03178b096&amp;t=m&amp;brcurrent=3,0x346ef3065c07572f:0xe711f004bf9c5469,1&amp;ll=23.684774,120.761719&amp;spn=4.023709,7.89917&amp;z=7&amp;output=embed"></iframe>
                             </div>
                         </div>
                     </div>
@@ -107,7 +120,7 @@
         <!-- endbuild -->
 
         <script src="scripts/view.js"></script>
-        <script src="scripts/main.js"></script>
+        <script src="scripts/controller.js"></script>
 
         <!-- build:js scripts/plugins.js -->
         <script src="bower_components/sass-bootstrap/js/affix.js"></script>
