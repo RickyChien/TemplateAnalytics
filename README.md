@@ -1,3 +1,3 @@
 # TemplateAnalytics
 
-A data analytics website created by yeoman and express.js.
+A data analytics front-end website created by yeoman.

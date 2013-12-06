@@ -1,0 +1,253 @@
+$icon-font-path: "../bower_components/sass-bootstrap/fonts/";
+
+@import 'sass-bootstrap/lib/bootstrap';
+
+.browsehappy {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+/* Space out content a bit */
+body {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Custom page header */
+.header {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+/* Make the masthead heading the same height as the navigation */
+.header h3 {
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 40px;
+    padding-bottom: 19px;
+}
+
+/* Custom page footer */
+.footer {
+    padding-top: 19px;
+    color: #777;
+    border-top: 1px solid #e5e5e5;
+}
+
+.container-narrow > hr {
+    margin: 30px 0;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+    text-align: center;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.jumbotron .btn {
+    font-size: 11px;
+}
+
+/* Supporting marketing content */
+.marketing {
+    margin: 40px 0;
+}
+
+.marketing p + h4 {
+    margin-top: 28px;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+    .container {
+        max-width: 1130px;
+    }
+
+    /* Remove the padding we set earlier */
+    .header,
+    .marketing,
+    .footer {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    /* Space out the masthead */
+    .header {
+        margin-bottom: 30px;
+    }
+    /* Remove the bottom border on the jumbotron for visual effect */
+    .jumbotron {
+        border-bottom: 0;
+    }
+}
+
+/* Pace.js automatic page load progress bars  */
+.pace .pace-progress {
+  background: #29d;
+  position: relative;
+  margin-bottom: 15px;
+  z-index: 2000;
+  top: 0;
+  left: 0;
+  height: 3px;
+
+  -webkit-transition: width 0.5s;
+  -moz-transition: width 0.5s;
+  -o-transition: width 0.5s;
+  transition: width 0.5s;
+}
+
+.pace-inactive {
+  display: none;
+}
+
+.well {
+  position: relative;
+}
+
+.progress-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 15px;
+}
+
+.pace .pace-progress-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: -32px;
+  bottom: 0;
+
+  background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.2)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.2)), color-stop(0.75, rgba(255, 255, 255, 0.2)), color-stop(0.75, transparent), to(transparent));
+  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);
+  background-image: -moz-linear-gradient(45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);
+  background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);
+  -webkit-background-size: 32px 32px;
+  -moz-background-size: 32px 32px;
+  -o-background-size: 32px 32px;
+  background-size: 32px 32px;
+
+  -webkit-animation: pace-stripe-animation 500ms linear infinite;
+  -moz-animation: pace-stripe-animation 500ms linear infinite;
+  -ms-animation: pace-stripe-animation 500ms linear infinite;
+  -o-animation: pace-stripe-animation 500ms linear infinite;
+  animation: pace-stripe-animation 500ms linear infinite;
+}
+
+@-webkit-keyframes pace-stripe-animation {
+  0% { -webkit-transform: none; transform: none; }
+  100% { -webkit-transform: translate(-32px, 0); transform: translate(-32px, 0); }
+}
+@-moz-keyframes pace-stripe-animation {
+  0% { -moz-transform: none; transform: none; }
+  100% { -moz-transform: translate(-32px, 0); transform: translate(-32px, 0); }
+}
+@-o-keyframes pace-stripe-animation {
+  0% { -o-transform: none; transform: none; }
+  100% { -o-transform: translate(-32px, 0); transform: translate(-32px, 0); }
+}
+@-ms-keyframes pace-stripe-animation {
+  0% { -ms-transform: none; transform: none; }
+  100% { -ms-transform: translate(-32px, 0); transform: translate(-32px, 0); }
+}
+@keyframes pace-stripe-animation {
+  0% { transform: none; transform: none; }
+  100% { transform: translate(-32px, 0); transform: translate(-32px, 0); }
+}
+
+/* CSS hack for hidding google map to avoid display: none */
+.tab-content > .tab-pane {
+    position: absolute !important;
+    left: -10000px !important;
+    display: block !important;
+}
+
+.tab-content > .active {
+    position: relative !important;
+    left: 0px !important;
+    display: block;
+}
+
+#grid-data td:first-child {
+    padding-left: 20px;
+}
+
+.panel {
+  width: 100% !important;
+}
+
+#search-btn {
+  position: relative;
+  width: 30%;
+  left: 35%;
+  margin: 0 auto;
+}
+
+.map-wrapper {
+    position: relative;
+    width: 100%;
+    height: 750px;
+}
+
+#map-canvas {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+#chart {
+    width: 100%;
+}
+
+#chart #column, 
+#chart #line {
+    height: 360px;
+    margin: 8%;
+}
+
+.cluster {
+    color: #FFF;
+    text-align: center;
+    font-family: 'Arial, Helvetica';
+    font-weight: bold;
+    border-radius: 50%;
+    background: #25AED2;
+    border: 1px solid #FFF;
+    -moz-box-shadow:inset 0px 0px 3px 1px rgba(0,0,0,1);
+    -webkit-box-shadow:inset 0px 0px 3px 1px rgba(0,0,0,1);
+    box-shadow:inset 0px 0px 3px 1px rgba(0,0,0,1);
+}
+
+.cluster-s {
+    font-size: 14px !important;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+}
+
+.cluster-m {
+    font-size: 18px !important;
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+}
+
+.cluster-l {
+    font-size: 22px !important;
+    width: 110px;
+    height: 110px;
+    line-height: 110px;
+}

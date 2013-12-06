@@ -1,0 +1,10 @@
+{
+  "name": "templateanalytics",
+  "version": "0.0.0",
+  "dependencies": {
+    "sass-bootstrap": "~3.0.0",
+    "jquery": "~1.10.2",
+    "jquery-ui": "~1.10.3"
+  },
+  "devDependencies": {}
+}
