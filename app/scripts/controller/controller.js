@@ -102,7 +102,7 @@ var Analytics = Analytics || {};
         self.chartmodel = self.chartmodel || new Analytics.ChartModel(),
         self.chartview.setView(self.chartmodel.createChartOptions(self.getSelectedData()));
       }).fail(function() {
-        console.log("Loading hightcharts script error.");
+        console.log("Loading highcharts script error.");
       });
     },
 
