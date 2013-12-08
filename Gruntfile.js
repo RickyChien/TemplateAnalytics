@@ -61,7 +61,8 @@ module.exports = function (grunt) {
                     base: [
                         '.tmp',
                         'test',
-                        '<%= yeoman.app %>'
+                        '<%= yeoman.app %>',
+                        'bower_components'
                     ]
                 }
             },
@@ -102,7 +103,7 @@ module.exports = function (grunt) {
             all: {
                 options: {
                     run: true,
-                    urls: ['http://<%= connect.test.options.hostname %>:<%= connect.test.options.port %>/index.html'],
+                    urls: ['http://<%= connect.test.options.hostname %>:<%= connect.test.options.port %>/test_runner.html'],
                     reporter: 'Spec'
                 }
             }
