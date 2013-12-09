@@ -20,6 +20,7 @@
     "grunt-autoprefixer": "~0.2.0",
     "grunt-usemin": "~2.0.0",
     "grunt-mocha": "~0.4.0",
+    "grunt-blanket-mocha": "~0.3.3",
     "grunt-modernizr": "~0.3.0",
     "grunt-svgmin": "~0.2.0",
     "grunt-concurrent": "~0.3.0",

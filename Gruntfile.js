@@ -62,7 +62,8 @@ module.exports = function (grunt) {
                         '.tmp',
                         'test',
                         '<%= yeoman.app %>',
-                        'bower_components'
+                        'bower_components',
+                        'node_modules'
                     ]
                 }
             },
@@ -105,6 +106,17 @@ module.exports = function (grunt) {
                     run: true,
                     urls: ['http://<%= connect.test.options.hostname %>:<%= connect.test.options.port %>/test_runner.html'],
                     reporter: 'Spec'
+                }
+            }
+        },
+        blanket_mocha: {
+            all: {
+                options: {
+                    run: true,
+                    urls: ['http://<%= connect.test.options.hostname %>:<%= connect.test.options.port %>/test_runner.html'],
+                    reporter: 'Spec',
+                    threshold: 60,
+                    globalThreshold: 60
                 }
             }
         },
@@ -314,7 +326,7 @@ module.exports = function (grunt) {
         'concurrent:test',
         'autoprefixer',
         'connect:test',
-        'mocha'
+        'blanket_mocha'
     ]);
 
     grunt.registerTask('build', [
