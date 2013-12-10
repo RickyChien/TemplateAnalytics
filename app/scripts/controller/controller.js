@@ -43,9 +43,7 @@ var Analytics = Analytics || {};
           dataType: "json"
         }).done(function(data) {
           self.data = data;
-          self.gridview = self.gridview || new Analytics.GridView(),
-          self.gridmodel = self.gridmodel || new Analytics.GridModel(),
-          self.gridview.setView(self.gridmodel.createGridOptions(data));
+          self.showGrid();
           $('#grid-tab').click();
         }).fail(function() {
           console.log('Searching data error');
@@ -85,10 +83,22 @@ var Analytics = Analytics || {};
       });
     },
 
-    showChart: function() {
+    showGrid: function() {
+      // Directly refresh if it has been initialized
+      if (this.gridview && this.gridmodel) {
+        this.gridview.setView(this.gridmodel.create(this.data));
+        return;
+      }
+
+      this.gridview = this.gridview || new Analytics.GridView(),
+      this.gridmodel = this.gridmodel || new Analytics.GridModel(),
+      this.gridview.setView(this.gridmodel.create(this.data));
+    },
+
+    showChart: function () {
       // Directly refresh if it has been initialized
       if (this.chartview && this.chartmodel) {
-        this.chartview.setView(this.chartmodel.createChartOptions(this.getSelectedData()));
+        this.chartview.setView(this.chartmodel.create(this.getSelectedData()));
         return;
       }
 
@@ -100,7 +110,7 @@ var Analytics = Analytics || {};
       }).done(function() {
         self.chartview = self.chartview || new Analytics.ChartView(),
         self.chartmodel = self.chartmodel || new Analytics.ChartModel(),
-        self.chartview.setView(self.chartmodel.createChartOptions(self.getSelectedData()));
+        self.chartview.setView(self.chartmodel.create(self.getSelectedData()));
       }).fail(function() {
         console.log("Loading highcharts script error.");
       });
@@ -109,7 +119,7 @@ var Analytics = Analytics || {};
     showMap: function() {
       // Directly refresh if it has been initialized
       if (this.mapview && this.mapmodel) {
-        this.mapview.setView(this.mapmodel.createMapOptions(this.getSelectedData()));
+        this.mapview.setView(this.mapmodel.create(this.getSelectedData()));
         return;
       }
 
@@ -136,7 +146,7 @@ var Analytics = Analytics || {};
       $.when(getGoogleMapAjax(), getGmap3Ajax()).done(function() {
         self.mapview = self.mapview || new Analytics.MapView(),
         self.mapmodel = self.mapmodel || new Analytics.MapModel(),
-        self.mapview.setView(self.mapmodel.createMapOptions(self.getSelectedData()));
+        self.mapview.setView(self.mapmodel.create(self.getSelectedData()));
       }).fail(function() {
         console.log("Loading gmap scirpt error.");
       });

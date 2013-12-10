@@ -9,7 +9,7 @@ var Analytics = Analytics || {};
 
   MapModel.prototype = {
 
-    createMapOptions: function(data) {
+    create: function(data) {
       if (data.length === 0) {
         return [{
           map: {

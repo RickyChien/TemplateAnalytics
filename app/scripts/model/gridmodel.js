@@ -9,7 +9,7 @@ var Analytics = Analytics || {};
 
   GridModel.prototype = {
 
-    createGridOptions: function(data) {
+    create: function(data) {
       var options = {},
           key;
 

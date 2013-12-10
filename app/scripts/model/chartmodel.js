@@ -13,7 +13,7 @@ var Analytics = Analytics || {};
 
   ChartModel.prototype = {
 
-    createChartOptions: function(data) {
+    create: function(data) {
       // Return default chart if data is empty
       if (data.length === 0) {        
         return [{
