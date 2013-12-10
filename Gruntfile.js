@@ -115,8 +115,8 @@ module.exports = function (grunt) {
                     run: true,
                     urls: ['http://<%= connect.test.options.hostname %>:<%= connect.test.options.port %>/test_runner.html'],
                     reporter: 'Spec',
-                    threshold: 60,
-                    globalThreshold: 60
+                    threshold: 90,
+                    globalThreshold: 90
                 }
             }
         },
