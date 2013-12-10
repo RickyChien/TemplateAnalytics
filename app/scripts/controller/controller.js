@@ -90,8 +90,8 @@ var Analytics = Analytics || {};
         return;
       }
 
-      this.gridview = this.gridview || new Analytics.GridView(),
-      this.gridmodel = this.gridmodel || new Analytics.GridModel(),
+      this.gridview = new Analytics.GridView();
+      this.gridmodel = new Analytics.GridModel();
       this.gridview.setView(this.gridmodel.create(this.data));
     },
 
@@ -108,8 +108,8 @@ var Analytics = Analytics || {};
         url: "http://cdnjs.cloudflare.com/ajax/libs/highcharts/3.0.2/highcharts.js",
         dataType: "script"
       }).done(function() {
-        self.chartview = self.chartview || new Analytics.ChartView(),
-        self.chartmodel = self.chartmodel || new Analytics.ChartModel(),
+        self.chartview = new Analytics.ChartView();
+        self.chartmodel = new Analytics.ChartModel();
         self.chartview.setView(self.chartmodel.create(self.getSelectedData()));
       }).fail(function() {
         console.log("Loading highcharts script error.");
@@ -144,8 +144,8 @@ var Analytics = Analytics || {};
       }
 
       $.when(getGoogleMapAjax(), getGmap3Ajax()).done(function() {
-        self.mapview = self.mapview || new Analytics.MapView(),
-        self.mapmodel = self.mapmodel || new Analytics.MapModel(),
+        self.mapview = new Analytics.MapView();
+        self.mapmodel = new Analytics.MapModel();
         self.mapview.setView(self.mapmodel.create(self.getSelectedData()));
       }).fail(function() {
         console.log("Loading gmap scirpt error.");
