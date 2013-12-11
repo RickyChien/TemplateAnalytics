@@ -104,10 +104,28 @@ var Analytics = Analytics || {};
 
       var self = this;
 
-      $.ajax({
-        url: "http://cdnjs.cloudflare.com/ajax/libs/highcharts/3.0.2/highcharts.js",
-        dataType: "script"
-      }).done(function() {
+      function getHighChart() {
+        return $.ajax({
+          url: "http://cdnjs.cloudflare.com/ajax/libs/highcharts/3.0.2/highcharts.js",
+          dataType: "script"
+        });
+      }
+
+      function getChartView() {
+        return $.ajax({
+          url: "scripts/view/chartview.js",
+          dataType: "script"
+        });
+      }
+
+      function getChartModel() {
+        return $.ajax({
+          url: "scripts/model/chartmodel.js",
+          dataType: "script"
+        });
+      }
+
+      $.when(getHighChart(), getChartView(), getChartModel()).done(function() {
         self.chartview = new Analytics.ChartView();
         self.chartmodel = new Analytics.ChartModel();
         self.chartview.setView(self.chartmodel.create(self.getSelectedData()));
@@ -129,21 +147,42 @@ var Analytics = Analytics || {};
         // Do nothing here because we use Gmap3 to setup google map
       };
 
-      function getGoogleMapAjax() {
+      function getGoogleMap() {
         return $.ajax({
           url: "http://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=initGoogleMap",
           dataType: "script"
         });
       }
 
-      function getGmap3Ajax() {
+      function getGmap3() {
         return $.ajax({
           url: "http://cdn.jsdelivr.net/gmap3/5.1.1/gmap3.min.js",
           dataType: "script"
         });
       }
 
-      $.when(getGoogleMapAjax(), getGmap3Ajax()).done(function() {
+      function getColors() {
+        return $.ajax({
+          url: "scripts/model/colors.js",
+          dataType: "script"
+        });
+      }
+
+      function getMapView() {
+        return $.ajax({
+          url: "scripts/view/mapview.js",
+          dataType: "script"
+        });
+      }
+
+      function getMapModel() {
+        return $.ajax({
+          url: "scripts/model/mapmodel.js",
+          dataType: "script"
+        });
+      }
+
+      $.when(getGoogleMap(), getGmap3(), getColors(), getMapView(), getMapModel()).done(function() {
         self.mapview = new Analytics.MapView();
         self.mapmodel = new Analytics.MapModel();
         self.mapview.setView(self.mapmodel.create(self.getSelectedData()));
