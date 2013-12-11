@@ -14,7 +14,7 @@ var Analytics = Analytics || {};
         $('#' + highchart.chart.type).highcharts(highchart);
       });
     }
-    
+
   };
 
   Analytics.ChartView = ChartView;

@@ -197,7 +197,7 @@ var Analytics = Analytics || {};
         series: series
       };
     }
-    
+
   };
 
   Analytics.ChartModel = ChartModel;

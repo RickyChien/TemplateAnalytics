@@ -97,9 +97,9 @@ var Analytics = Analytics || {};
 
       return opt;
     }
-    
+
   };
-    
+
   Analytics.MapModel = MapModel;
 
 })();
