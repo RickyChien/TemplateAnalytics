@@ -3,155 +3,139 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>TemplateAnalytics</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width">
-  <!-- build:css(.tmp) styles/main.css -->
-  <link rel="stylesheet" href="bower_components/jquery-ui/themes/flick/jquery-ui.css">
-  <link rel="stylesheet" href="styles/addons/jquery-ui-timepicker-addon.css">
-  <link rel="stylesheet" href="styles/main.css">
-  <!-- endbuild -->
-  <!-- build:js scripts/defers.js -->
-  <script src="bower_components/pace/pace.min.js" defer></script>
-  <!-- endbuild -->
-</head>
-<body>
-  <!--[if lt IE 10]>
-  <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-  <![endif]-->
-  <div class="container">
-    <div class="header">
-      <h3 class="text-muted">TemplateAnalytics</h3>
-    </div>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>test</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <!-- build:css(.tmp) styles/main.css -->
+        <link rel="stylesheet" href="styles/main.css">
+        <!-- endbuild -->
+        <!-- build:js scripts/vendor/modernizr.js -->
+        <script src="bower_components/modernizr/modernizr.js"></script>
+        <!-- endbuild -->
+    </head>
+    <body>
+        <!--[if lt IE 10]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
 
-    <div class="row"></div>
-    <div class="col-md-3" >
-      <div class="hidden-print affix-top" role="complementary">
-        <ul class="nav">
-          <a href="#push_notification" class="list-group-item active">Push Notification</a>
-          <a href="#vip_card" class="list-group-item">VIP Card</a>
-          <a href="#adv_banner" class="list-group-item">Advertisement</a>
-          <a href="#top_site" class="list-group-item">Top Site</a>
-          <a href="#search_bar_hint" class="list-group-item">Search Bar Hint</a>
-        </ul>
-      </div>
-    </div>
 
-    <div class="col-md-9">
-      <div class="well">
-        <form class="form-horizontal" role="form">
-          <div class="form-group">
-            <label class="col-sm-2 control-label">Search</label>
-            <div class="col-sm-6">
-              <input class="form-control" type="text" placeholder="Enter a content keyword or leave empty">
+        <div class="container">
+            <div class="header">
+                <h3 class="text-muted">TemplateAnalytics</h3>
             </div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-2 control-label">Start Time</label>
-            <div class="col-sm-4">
-              <input id="start-time" type="text" class="form-control" placeholder="Specify a time or leave empty">
-            </div>
-            <label class="col-sm-2 control-label">End Time</label>
-            <div class="col-sm-4">
-              <input id="end-time" type="text" class="form-control" placeholder="Specify a time or leave empty">
-            </div>
-          </div>
-          <input id="search-btn" class="btn btn-primary" type="button" value="Search">
-        </form>
-      </div>
 
-      <ul id="tabs" class="nav nav-tabs nav-justified">
-        <li><a id="chart-tab" href="#chart" data-toggle="tab">Chart</a></li>
-        <li class="active"><a id="grid-tab" href="#grid" data-toggle="tab">Grid</a></li>
-        <li><a id="map-tab" href="#map" data-toggle="tab">Map</a></li>
-      </ul>
+            <div class="row"></div>
+                <div class="col-md-3" >
+                    <div class="hidden-print affix-top" role="complementary">
+                        <ul class="nav">
+                            <a href="#notifications" class="list-group-item active">Push Notification</a>
+                            <a href="#vip_card" class="list-group-item">VIP Card</a>
+                            <a href="#adv_banner" class="list-group-item">Advertisement</a>
+                            <a href="#top_site" class="list-group-item">Top Site</a>
+                            <a href="#search_bar_hint" class="list-group-item">Search Bar Hint</a>
+                        </ul>
+                    </div>
+                </div>
 
-      <div>
-        <div class="well tab-content">
-          <div class="progress-wrapper"></div>
-          <div id="chart" class="panel panel-info tab-pane fade">
-            <div class="panel-heading">Chart</div>
-            <div class="panel-body">
-              <div class="alert alert-success">
-                <span class="glyphicon glyphicon-info-sign"></span>
-                Tips : Select item(s) from Grid to see it's Chart visualization.
-              </div>
-              <div id="column"></div>
-              <div id="line"></div>
-            </div>
-          </div>
+                <div id="view" class="col-md-9">
+                    <div class="well">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Search</label>
+                                <div class="col-sm-6">
+                                    <input id="query" class="form-control" type="text" placeholder="Enter a content keyword or leave empty">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Start Time</label>
+                                <div class="col-sm-4">
+                                    <input id="start-time" type="text" class="form-control" placeholder="Specify a time or leave empty">
+                                </div>
+                                <label class="col-sm-2 control-label">End Time</label>
+                                <div class="col-sm-4">
+                                    <input id="end-time" type="text" class="form-control" placeholder="Specify a time or leave empty">
+                                </div>
+                            </div>
+                            <input id="search-btn" class="btn btn-primary" type="button" value="Search">
+                        </form>
+                    </div>
 
-          <div id="grid" class="panel panel-info tab-pane fade in active">
-            <div class="panel-heading">Grid</div>
-            <div class="panel-body">
-              <div class="alert alert-success">
-                <span class="glyphicon glyphicon-info-sign"></span>
-                Tips : Select item(s) and then click Chart / Map to see visualization.
-              </div>
-              <div class="table-responsive">
-                <table id="grid-data" class="table">
-                  <thead>
-                    <tr>
-                      <th>Select</th>
-                      <th>Message Content</th>
-                      <th>Reads</th>
-                      <th>Unreads</th>
-                      <th>Rate</th>
-                    </tr>
-                  </thead>
-                  <tbody></tbody>
-                </table>
-              </div>
-            </div>
-          </div>
+                    <ul id="tabs" class="nav nav-tabs nav-justified">
+                        <li><a id="chart-tab" href="#chart" data-toggle="tab">Chart</a></li>
+                        <li class="active"><a id="grid-tab" href="#grid" data-toggle="tab">Grid</a></li>
+                        <li><a id="map-tab" href="#map" data-toggle="tab">Map</a></li>
+                    </ul>
 
-          <div id="map" class="panel panel-info tab-pane fade">
-            <div class="panel-heading">Map</div>
-            <div class="panel-body">
-              <div class="alert alert-success">
-                <span class="glyphicon glyphicon-info-sign"></span>
-                Tips : Select item(s) from Grid to see it's Map visualization.
-              </div>
-              <div class="map-wrapper">
-                <div id="map-canvas"></div>
-              </div>
+                    <div>
+                        <div class="well tab-content">
+                            <div class="progress-wrapper"></div>
+                            <div id="content" class="panel panel-info tab-pane fade"></div>
+                            <div id="chart" class="panel panel-info tab-pane fade">
+                                <div class="panel-heading">Chart</div>
+                                <div class="panel-body">
+                                    <div class="alert alert-success">
+                                        <span class="glyphicon glyphicon-info-sign"></span>
+                                        Tips : Select item(s) from Grid to see it's Chart visualization.
+                                    </div>
+                                    <div id="column"></div>
+                                    <div id="line"></div>
+                                </div>
+                            </div>
+
+                            <div id="grid" class="panel panel-info tab-pane fade in active">
+                                <div class="panel-heading">Grid</div>
+                                <div class="panel-body">
+                                    <div class="alert alert-success">
+                                        <span class="glyphicon glyphicon-info-sign"></span>
+                                        Tips : Select item(s) and then click Chart / Map to see visualization.
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table id="grid-data" class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Select</th>
+                                                    <th>ID</th>
+                                                    <th class="msg">Message Content</th>
+                                                    <th>Reads</th>
+                                                    <th>Unreads</th>
+                                                    <th>Rate</th>
+                                                    <th>Create Time</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody></tbody>
+                                        </table>
+                                    </div>
+                                    <ul class="pager">
+                                        <li id="prev" class="disabled"><a href="#">Prev</a></li>
+                                        <li id="next"><a href="#">Next</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div id="map" class="panel panel-info tab-pane fade">
+                                <div class="panel-heading">Map</div>
+                                <div class="panel-body">
+                                    <div class="alert alert-success">
+                                        <span class="glyphicon glyphicon-info-sign"></span>
+                                        Tips : Select item(s) from Grid to see it's Map visualization.
+                                    </div>
+                                    <div class="map-wrapper">
+                                        <div id="map-canvas"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-    </div>
-  </div>
 
-  <!-- build:js scripts/vender.js -->
-  <script src="bower_components/jquery/jquery.js"></script>
-  <script src="bower_components/jquery-ui/ui/jquery-ui.js"></script>
-  <!-- endbuild -->
-
-  <!-- build:js scripts/main.js -->
-  <script src="scripts/addons/jquery-ui-timepicker-addon.js"></script>
-  <script src="scripts/addons/jquery-ui-sliderAccess.js"></script>
-  <script src="scripts/view/gridview.js"></script>
-  <script src="scripts/model/gridmodel.js"></script>
-  <script src="scripts/controller/controller.js"></script>
-  <script src="scripts/main.js"></script>
-  <!-- endbuild -->
-
-  <!-- build:js scripts/plugins.js -->
-  <!-- <script src="bower_components/sass-bootstrap/js/affix.js"></script> -->
-  <!-- <script src="bower_components/sass-bootstrap/js/alert.js"></script> -->
-  <!-- <script src="bower_components/sass-bootstrap/js/dropdown.js"></script> -->
-  <!-- <script src="bower_components/sass-bootstrap/js/tooltip.js"></script> -->
-  <!-- <script src="bower_components/sass-bootstrap/js/modal.js"></script> -->
-  <!-- <script src="bower_components/sass-bootstrap/js/transition.js"></script> -->
-  <!-- <script src="bower_components/sass-bootstrap/js/button.js"></script> -->
-  <!-- <script src="bower_components/sass-bootstrap/js/popover.js"></script> -->
-  <!-- <script src="bower_components/sass-bootstrap/js/carousel.js"></script> -->
-  <!-- <script src="bower_components/sass-bootstrap/js/scrollspy.js"></script> -->
-  <!-- <script src="bower_components/sass-bootstrap/js/collapse.js"></script> -->
-  <script src="bower_components/sass-bootstrap/js/tab.js"></script>
-  <!-- endbuild -->
+        <!-- build:js scripts/main.js -->
+        <script data-main="scripts/main" src="bower_components/requirejs/require.js"></script>
+        <!-- endbuild -->
 </body>
 </html>

@@ -1,8 +1,37 @@
-(function() {
-  'use strict';
+/*global require*/
+'use strict';
 
-  var controller = new Analytics.Controller();
-  controller.initialize();
-  $('#search-btn').click();
-  
-})();
+require.config({
+    shim: {
+        underscore: {
+            exports: '_'
+        },
+        backbone: {
+            deps: [
+                'underscore',
+                'jquery'
+            ],
+            exports: 'Backbone'
+        },
+        bootstrap: {
+            deps: ['jquery'],
+            exports: 'jquery'
+        }
+    },
+    paths: {
+        jquery: '../bower_components/jquery/jquery',
+        backbone: '../bower_components/backbone/backbone',
+        underscore: '../bower_components/underscore/underscore',
+        bootstrap: '../bower_components/sass-bootstrap/dist/js/bootstrap'
+    }
+});
+
+require([
+    'backbone',
+    'views/app'
+], function (Backbone, AppView) {
+    Backbone.history.start();
+
+    // Initialize the application view
+    new AppView();
+});

@@ -187,6 +187,18 @@ body {
   width: 100% !important;
 }
 
+td { 
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+td.msg {
+  white-space: normal;
+  overflow: visible; 
+  text-overflow: ellipsis;
+}
+
 #search-btn {
   position: relative;
   width: 30%;
