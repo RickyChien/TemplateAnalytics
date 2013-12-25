@@ -20,10 +20,25 @@ require.config({
         bootstrapTab: {
             deps: ['jquery'],
             exports: 'jquery'
+        },
+        jqueryUI: {
+            deps: ['jquery'],
+            exports: 'jquery'
+        },
+        jquery_ui_slider: {
+            deps: ['jquery', 'jqueryUI'],
+            exports: 'jquery'
+        },
+        jquery_ui_timepicker: {
+            deps: ['jquery', 'jqueryUI', 'jquery_ui_slider'],
+            exports: 'jquery'
         }
     },
     paths: {
         jquery: '../bower_components/jquery/jquery',
+        jqueryUI: '../bower_components/jquery-ui/ui/jquery-ui',
+        jquery_ui_slider: '../bower_components/jqueryui-timepicker-addon/src/jquery-ui-sliderAccess',
+        jquery_ui_timepicker: '../bower_components/jqueryui-timepicker-addon/src/jquery-ui-timepicker-addon',
         backbone: '../bower_components/backbone/backbone',
         underscore: '../bower_components/underscore/underscore',
         bootstrap: '../bower_components/sass-bootstrap/dist/js/bootstrap',
