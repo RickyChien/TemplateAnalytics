@@ -75,7 +75,60 @@
                     <div>
                         <div class="well">
                             <div class="progress-wrapper"></div>
-                            <div id="content" class="tab-content"></div>
+                            <div id="content" class="tab-content">
+
+                                <div id="grid" class="panel panel-info tab-pane fade in active">
+                                    <div class="panel-heading">Grid</div>
+                                    <div class="panel-body">
+                                        <div class="alert alert-success">
+                                            <span class="glyphicon glyphicon-info-sign"></span>
+                                            Tips : Select item(s) and then click Chart / Map to see visualization.
+                                        </div>
+                                        <div class="table-responsive">
+                                            <table id="grid-data" class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Select</th>
+                                                        <th>ID</th>
+                                                        <th>Message Content</th>
+                                                        <th>Reads</th>
+                                                        <th>Unreads</th>
+                                                        <th>Rate</th>
+                                                        <th>Create Time</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody></tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="chart" class="panel panel-info tab-pane fade">
+                                    <div class="panel-heading">Chart</div>
+                                    <div class="panel-body">
+                                        <div class="alert alert-success">
+                                            <span class="glyphicon glyphicon-info-sign"></span>
+                                            Tips : Select item(s) from Grid to see it's Chart visualization.
+                                        </div>
+                                        <div id="column"></div>
+                                        <div id="line"></div>
+                                    </div>
+                                </div>
+
+                                <div id="map" class="panel panel-info tab-pane fade">
+                                    <div class="panel-heading">Map</div>
+                                    <div class="panel-body">
+                                        <div class="alert alert-success">
+                                            <span class="glyphicon glyphicon-info-sign"></span>
+                                            Tips : Select item(s) from Grid to see it's Map visualization.
+                                        </div>
+                                        <div class="map-wrapper">
+                                            <div id="map-canvas"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -1,9 +1,8 @@
 define([
     'underscore',
     'backbone',
-    'collections/notifications',
-    'text!templates/grid.html'
-], function (_, Backbone, Notifications, gridTemplate) {
+    'collections/notifications'
+], function (_, Backbone, Notifications) {
     'use strict';
 
     var GridItemView = Backbone.View.extend({
@@ -22,7 +21,7 @@ define([
             $('<td>').text(this.model.get('unread_count')).appendTo(this.el);
             $('<td>').text(this.model.get('rate') + " %").appendTo(this.el);
             $('<td>').text(this.model.get('created_at')).appendTo(this.el);
-            
+
             return this;
         },
 
@@ -36,18 +35,15 @@ define([
 
         el: '#content',
 
-        template: _.template(gridTemplate),
-
         initialize: function () {
             this.$collection = new Notifications();
 
-            this.listenTo(this.$collection, 'add', this.render);
+            this.listenTo(this.$collection, 'sync', this.render);
 
             this.$collection.fetch();
         },
 
         render: function () {
-            this.$el.html(this.template());
             this.$collection.each(this.renderRow, this);
 
             return this;
