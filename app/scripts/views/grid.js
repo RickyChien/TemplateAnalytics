@@ -1,46 +1,62 @@
 define([
-    'jquery',
     'underscore',
     'backbone',
-    'collections/grids'
-], function ($, _, Backbone, Grids) {
+    'collections/notifications',
+    'text!templates/grid.html'
+], function (_, Backbone, Notifications, gridTemplate) {
     'use strict';
 
-    var GridView = Backbone.View.extend({
+    var GridItemView = Backbone.View.extend({
 
-        initialize: function () {
-            this.$content = this.$('#grid');
-            this.$tbody = this.$('#grid-data tbody');
+        tagName: 'tr',
+
+        events: {
+            'click input': 'toggleSelected'
         },
 
         render: function () {
-            var tbody = $('<tbody>').addClass('table-content'),
-                content = [],
-                key,
-                tr,
-                checkbox,
-                count = 0;
-
-            for (key in options) {
-                var item = options[key];
-
-                tr = $('<tr>');
-                checkbox = { type: 'checkbox' };
-                $('<input>', checkbox).attr('id', count++).wrap('<td>').parent().appendTo(tr);
-                $('<td>').text(key).attr('class','content').appendTo(tr);
-                $('<td>').text(item.read).appendTo(tr);
-                $('<td>').text(item.unread).appendTo(tr);
-                $('<td>').text(item.rate + " %").appendTo(tr);
-                content.push(tr);
-            }
-
-            tbody.append(content);
-            $('#grid-data tbody').replaceWith(tbody);
+            $('<input>', { type: 'checkbox' }).wrap('<td>').parent().appendTo(this.el);
+            $('<td>').text(this.model.get('id')).appendTo(this.el);
+            $('<td>').text(this.model.get('content')).appendTo(this.el);
+            $('<td>').text(this.model.get('read_count')).appendTo(this.el);
+            $('<td>').text(this.model.get('unread_count')).appendTo(this.el);
+            $('<td>').text(this.model.get('rate') + " %").appendTo(this.el);
+            $('<td>').text(this.model.get('created_at')).appendTo(this.el);
+            
+            return this;
         },
 
-        el: '#view',
+        toggleSelected: function () {
+            this.model.toggle();
+        }
 
-        template: '',
+    });
+
+    var GridView = Backbone.View.extend({
+
+        el: '#content',
+
+        template: _.template(gridTemplate),
+
+        initialize: function () {
+            this.$collection = new Notifications();
+
+            this.listenTo(this.$collection, 'add', this.render);
+
+            this.$collection.fetch();
+        },
+
+        render: function () {
+            this.$el.html(this.template());
+            this.$collection.each(this.renderRow, this);
+
+            return this;
+        },
+
+        renderRow: function (model) {
+            var view = new GridItemView({ model: model });
+            this.$('#grid-data tbody').append(view.render().el);
+        }
 
     });
 

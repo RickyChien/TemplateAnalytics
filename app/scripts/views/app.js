@@ -1,24 +1,18 @@
 define([
     'underscore',
     'backbone',
-    'collections/grids',
     'views/grid'
-], function (_, Backbone, Grids, GridView) {
+], function (_, Backbone, GridView) {
     'use strict';
 
     var AppView = Backbone.View.extend({
 
+        el: 'body',
+
         initialize: function () {
-            this.$search = this.$('#search-btn');
-            this.listenTo(Grids, 'search', this.showResult);
-        },
-
-        render: function () {
-
-        },
-
-        showResult: function (grid) {
-            var view = new GridView({ model: grid });
+            this.$gridTab = this.$('#grid-tab');
+            this.$gridTab.parent().addClass('active');
+            new GridView();
         }
 
     });
