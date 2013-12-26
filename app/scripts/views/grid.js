@@ -1,8 +1,7 @@
 define([
     'underscore',
-    'backbone',
-    'collections/notifications'
-], function (_, Backbone, Notifications) {
+    'backbone'
+], function (_, Backbone) {
     'use strict';
 
     var GridItemView = Backbone.View.extend({
@@ -36,15 +35,13 @@ define([
         el: '#content',
 
         initialize: function () {
-            this.$collection = new Notifications();
+            this.listenTo(this.collection, 'sync', this.render);
 
-            this.listenTo(this.$collection, 'sync', this.render);
-
-            this.$collection.fetch();
+            this.collection.fetch();
         },
 
         render: function () {
-            this.$collection.each(this.renderRow, this);
+            this.collection.each(this.renderRow, this);
 
             return this;
         },

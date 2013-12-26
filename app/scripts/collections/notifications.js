@@ -9,11 +9,7 @@ define([
 
         model: Notification,
 
-        url: 'scripts/api/notifications.json',
-
-        comparator: function (notification) {
-            return notification.get('id');
-        }
+        url: 'scripts/api/notifications.json'
 
     });
 
