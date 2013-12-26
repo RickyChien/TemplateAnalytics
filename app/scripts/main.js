@@ -17,39 +17,40 @@ require.config({
             deps: ['jquery'],
             exports: 'jquery'
         },
-        bootstrapTab: {
+        bootstrap_tab: {
             deps: ['jquery'],
             exports: 'jquery'
         },
-        jqueryUI: {
+        jquery_ui: {
             deps: ['jquery'],
             exports: 'jquery'
         },
         jquery_ui_slider: {
-            deps: ['jquery', 'jqueryUI'],
+            deps: ['jquery', 'jquery_ui'],
             exports: 'jquery'
         },
         jquery_ui_timepicker: {
-            deps: ['jquery', 'jqueryUI', 'jquery_ui_slider'],
+            deps: ['jquery', 'jquery_ui', 'jquery_ui_slider'],
             exports: 'jquery'
         }
     },
     paths: {
         jquery: '../bower_components/jquery/jquery',
-        jqueryUI: '../bower_components/jquery-ui/ui/jquery-ui',
+        jquery_ui: '../bower_components/jquery-ui/ui/jquery-ui',
         jquery_ui_slider: '../bower_components/jqueryui-timepicker-addon/src/jquery-ui-sliderAccess',
         jquery_ui_timepicker: '../bower_components/jqueryui-timepicker-addon/src/jquery-ui-timepicker-addon',
         backbone: '../bower_components/backbone/backbone',
         underscore: '../bower_components/underscore/underscore',
         bootstrap: '../bower_components/sass-bootstrap/dist/js/bootstrap',
-        bootstrapTab: '../bower_components/sass-bootstrap/js/tab',
-        text: '../bower_components/requirejs-text/text'
+        bootstrap_tab: '../bower_components/sass-bootstrap/js/tab',
+        text: '../bower_components/requirejs-text/text',
+        highcharts: '../bower_components/highcharts/highcharts'
     }
 });
 
 require([
     'backbone',
-    'bootstrapTab',
+    'bootstrap_tab',
     'views/app'
 ], function (Backbone, BootstrapTab, AppView) {
     Backbone.history.start();

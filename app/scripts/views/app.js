@@ -3,11 +3,8 @@ define([
     'backbone',
     'jquery_ui_slider',
     'jquery_ui_timepicker',
-    'views/grid',
-    'views/chart',
-    'views/map',
-    'collections/notifications'
-], function (_, Backbone, Slider, Timepicker, GridView, ChartView, MapView, Notifications) {
+    'collections/records'
+], function (_, Backbone, Slider, Timepicker, Records) {
     'use strict';
 
     var AppView = Backbone.View.extend({
@@ -25,21 +22,30 @@ define([
             this.$end = this.$('#end-time');
             this.$start.datetimepicker();
             this.$end.datetimepicker();
-            this.$collection = new Notifications();
+            this.$records = new Records();
 
             this.renderGrid();
         },
 
         renderGrid: function () {
-            this.$GirdView = this.$GirdView || new GridView({ collection: this.$collection });
+            var self = this;
+            require(['views/grid'], function (GridView) {
+                self.$GirdView = self.$GirdView || new GridView({ collection: self.$records });
+            });
         },
 
         renderChart: function () {
-            this.$ChartView = this.$ChartView || new ChartView({ collection: this.$collection });
+            var self = this;
+            require(['views/chart'], function (ChartView) {
+                self.$ChartView = self.$ChartView || new ChartView({ collection: self.$records });
+            });
         },
 
         renderMap: function () {
-            this.$MapView = this.$MapView || new MapView({ collection: this.$collection });
+            var self = this;
+            require(['views/map'], function (MapView) {
+                self.$MapView = self.$MapView || new MapView({ collection: self.$records });
+            });
         }
 
     });

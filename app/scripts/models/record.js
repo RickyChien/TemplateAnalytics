@@ -14,7 +14,7 @@ define([
 
     });
 
-    var Notification = Backbone.Model.extend({
+    var Record = Backbone.Model.extend({
 
         defaults: {
             selected: false
@@ -22,26 +22,24 @@ define([
 
         initialize: function () {
             this.logs = new Logs();
-            this.logs.url = 'scripts/api/notifications/' + this.id;
-
-            this.on('reset', this.update);
+            this.logs.url = 'scripts/api/' + this.get('type') + '/' + this.id + '.json';
 
             this.update();
-        },
-
-        update: function () {
-            this.set({
-                rate: (this.get('read_count') / (this.get('read_count') + this.get('unread_count')) * 100).toFixed(2)
-            });
         },
 
         toggle: function () {
             this.set({
                 selected: !this.get('selected')
             });
+        },
+
+        update: function () {
+            this.set({
+                rate: (this.get('read_count') / (this.get('read_count') + this.get('unread_count')) * 100).toFixed(2)
+            });
         }
 
     });
 
-    return Notification;
+    return Record;
 });

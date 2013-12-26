@@ -1,7 +1,8 @@
 define([
     'underscore',
-    'backbone'
-], function (_, Backbone) {
+    'backbone',
+    'highcharts'
+], function (_, Backbone, Highcharts) {
     'use strict';
 
     var ChartView = Backbone.View.extend({
@@ -9,20 +10,25 @@ define([
         el: '#content',
 
         initialize: function () {
+            this.$columnChart = this.$('#column');
+            this.$lineChart = this.$('#line');
+
             this.listenTo(this.collection, 'sync', this.render);
 
-            this.fetchLog();
+            this.fetchLogs();
         },
 
         render: function () {
-            console.log(this.collection)
+            this.$columnChart.highcharts(this.collection.getColumnChart());
+            this.$lineChart.highcharts(this.collection.getLineChart());
             return this;
         },
 
-        fetchLog: function () {
+        fetchLogs: function () {
             this.collection.each(function (model) {
                 model.logs.fetch();
             });
+            this.collection.trigger('sync');
         }
 
     });

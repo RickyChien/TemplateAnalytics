@@ -1,8 +1,7 @@
 define([
     'underscore',
-    'backbone',
-    'collections/notifications'
-], function (_, Backbone, Notifications) {
+    'backbone'
+], function (_, Backbone) {
     'use strict';
 
     var MapView = Backbone.View.extend({
@@ -10,11 +9,9 @@ define([
         el: '#content',
 
         initialize: function () {
-            this.$collection = new Notifications();
-
             this.listenTo(this.$collection, 'sync', this.render);
 
-            this.$collection.fetch();
+            this.collection.fetch();
         },
 
         render: function () {
