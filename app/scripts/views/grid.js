@@ -32,21 +32,19 @@ define([
 
     var GridView = Backbone.View.extend({
 
-        el: '#content',
+        el: '#view',
 
         initialize: function () {
-            this.listenTo(this.collection, 'sync', this.render);
+            this.listenTo(this.collection, 'add', this.addRow);
 
             this.collection.fetch();
         },
 
         render: function () {
-            this.collection.each(this.renderRow, this);
-
             return this;
         },
 
-        renderRow: function (model) {
+        addRow: function (model) {
             var view = new GridItemView({ model: model });
             this.$('#grid-data tbody').append(view.render().el);
         }

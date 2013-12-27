@@ -1,26 +1,28 @@
 define([
     'underscore',
     'backbone',
-    'models/record'
+    'models/Notification'
 ], function (_, Backbone, Notification) {
     'use strict';
 
     var Records = Backbone.Collection.extend({
 
         model: function (attrs, options) {
-            attrs.type = 'notifications';
             return new Notification(attrs, options);
         },
 
         url: 'scripts/api/notifications.json',
 
-        getColumnChart: function () {
-            var attrs = {
+        initialize: function () {
+            this.columnAttrs = {
                 chart: {
                     type: 'column'
                 },
                 title: {
                     text: 'Column Chart'
+                },
+                xAxis: {
+                    categories: []
                 },
                 yAxis: {
                     min: 0,
@@ -39,26 +41,23 @@ define([
                     }
                 },
                 series: [{
-                        name: 'Unread'
+                        name: 'Unread',
+                        data: []
                     }, {
-                        name: 'Read'
+                        name: 'Read',
+                        data: []
                 }]
             };
 
-            return attrs;
-        },
-
-        getLineChart: function () {
-            var attrs = {
+            this.lineAttrs = {
                 chart: {
                     type: 'line'
                 },
                 title: {
                     text: 'Line Chart'
                 },
-                    xAxis: {
-                    type: 'datetime',
-                    tickInterval: 3600 * 1000
+                xAxis: {
+                    type: 'datetime'
                 },
                 yAxis: {
                     title: {
@@ -70,8 +69,67 @@ define([
                         color: '#808080'
                     }]
                 },
-                series: [{}]
+                tooltip: {
+                    valueSuffix: ' reads'
+                },
+                series: []
             };
+        },
+
+        getColumnChart: function () {
+            var attrs = this.columnAttrs,
+                categories = [],
+                unreads = [],
+                reads = [];
+
+            this.each(function (record) {
+                if (record.get('selected')) {
+                    categories.push('ID' + record.id);
+                    reads.push(record.get('read_count'));
+                    unreads.push(record.get('unread_count'));
+                }
+            });
+
+            attrs.xAxis.categories = categories;
+            attrs.series[0].data = unreads;
+            attrs.series[1].data = reads;
+
+            return attrs;
+        },
+
+        getLineChart: function () {
+            var attrs = this.lineAttrs,
+                series = [];
+
+            this.each(function (record) {
+                if (record.get('selected')) {
+                    var reads = {},
+                        seriesData = [],
+                        date;
+
+                    record.logs.each(function (log) {
+                        date = new Date(log.get('updated_at'));
+                        date = date.toString().substring(0, 18) + ':00';
+
+                        if (log.get('status') >= 2) {
+                            reads[date] = reads[date] || 0;
+                            ++reads[date];
+                        }
+                    });
+
+                    for (var time in reads) {
+                        date = new Date(time);
+                        seriesData.push([date.getTime(), reads[time]]);
+                    }
+
+                    series.push({
+                        name: 'ID ' + record.id,
+                        data: seriesData.sort()
+                    });
+                }
+            });
+
+            attrs.series = series;
 
             return attrs;
         }

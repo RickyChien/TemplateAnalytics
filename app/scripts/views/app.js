@@ -29,23 +29,29 @@ define([
 
         renderGrid: function () {
             var self = this;
-            require(['views/grid'], function (GridView) {
-                self.$GirdView = self.$GirdView || new GridView({ collection: self.$records });
-            });
+            if (!this.$GridView) {
+                require(['views/grid'], function (GridView) {
+                    self.$GridView = new GridView({ collection: self.$records });
+                });
+            }
         },
 
         renderChart: function () {
             var self = this;
-            require(['views/chart'], function (ChartView) {
-                self.$ChartView = self.$ChartView || new ChartView({ collection: self.$records });
-            });
+            if (!this.$ChartView) {
+                require(['views/chart'], function (ChartView) {
+                    self.$ChartView = new ChartView({ collection: self.$records });
+                });
+            }
         },
 
         renderMap: function () {
             var self = this;
-            require(['views/map'], function (MapView) {
-                self.$MapView = self.$MapView || new MapView({ collection: self.$records });
-            });
+            if (!this.$MapView) {
+                require(['views/map'], function (MapView) {
+                    self.$MapView = new MapView({ collection: self.$records });
+                });
+            }
         }
 
     });

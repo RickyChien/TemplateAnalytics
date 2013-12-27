@@ -22,7 +22,7 @@ define([
 
         initialize: function () {
             this.logs = new Logs();
-            this.logs.url = 'scripts/api/' + this.get('type') + '/' + this.id + '.json';
+            this.logs.url = 'scripts/api/notifications/' + this.id + '.json';
 
             this.update();
         },
@@ -31,6 +31,10 @@ define([
             this.set({
                 selected: !this.get('selected')
             });
+
+            if (this.get('selected') === true && this.logs.models.length === 0) {
+                this.logs.fetch();
+            }
         },
 
         update: function () {
