@@ -1,20 +1,40 @@
 define([
     'underscore',
-    'backbone'
-], function (_, Backbone) {
+    'backbone',
+    'gmap3'
+], function (_, Backbone, Gmap) {
     'use strict';
 
     var MapView = Backbone.View.extend({
 
-        el: '#content',
+        el: '#view',
+
+        events: {
+            'click #map-tab': 'render'
+        },
 
         initialize: function () {
-            this.listenTo(this.$collection, 'sync', this.render);
+            this.$map = this.$('#map-canvas');
 
-            this.collection.fetch();
+            this.render();
         },
 
         render: function () {
+            var mapOpts = this.collection.getMapOptions(),
+                self = this;
+
+            // Clear maps data
+            this.$map.gmap3({
+                clear: {
+                    name: 'marker'
+                }
+            });
+
+            // Setup new maps data
+            mapOpts.forEach(function (opt) {
+                self.$map.gmap3(opt);
+            });
+
             return this;
         }
 
