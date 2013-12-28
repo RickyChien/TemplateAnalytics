@@ -15,27 +15,24 @@ require.config({
         },
         bootstrap: {
             deps: ['jquery'],
-            exports: 'jquery'
         },
         bootstrap_tab: {
-            deps: ['jquery'],
-            exports: 'jquery'
+            deps: ['jquery']
         },
         jquery_ui: {
             deps: ['jquery'],
-            exports: 'jquery'
         },
         jquery_ui_slider: {
-            deps: ['jquery', 'jquery_ui'],
-            exports: 'jquery'
+            deps: ['jquery', 'jquery_ui']
         },
         jquery_ui_timepicker: {
-            deps: ['jquery', 'jquery_ui', 'jquery_ui_slider'],
-            exports: 'jquery'
+            deps: ['jquery', 'jquery_ui', 'jquery_ui_slider']
         },
         gmap3: {
-            deps: ['jquery', 'async!http://maps.google.com/maps/api/js?v=3&sensor=false'],
-            exports: 'jquery'
+            deps: ['jquery', 'async!http://maps.google.com/maps/api/js?v=3&sensor=false']
+        },
+        colors:{
+            exports: 'Colors'
         }
     },
     paths: {
@@ -50,7 +47,8 @@ require.config({
         bootstrap_tab: '../bower_components/sass-bootstrap/js/tab',
         text: '../bower_components/requirejs-text/text',
         highcharts: '../bower_components/highcharts/highcharts',
-        gmap3: '../bower_components/gmap3/gmap3'
+        gmap3: '../bower_components/gmap3/gmap3',
+        colors: 'addons/colors'
     }
 });
 

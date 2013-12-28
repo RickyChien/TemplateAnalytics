@@ -2,7 +2,7 @@ define([
     'underscore',
     'backbone',
     'gmap3'
-], function (_, Backbone, Gmap) {
+], function (_, Backbone) {
     'use strict';
 
     var MapView = Backbone.View.extend({
@@ -15,7 +15,6 @@ define([
 
         initialize: function () {
             this.$map = this.$('#map-canvas');
-
             this.render();
         },
 

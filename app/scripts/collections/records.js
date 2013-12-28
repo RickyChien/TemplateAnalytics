@@ -1,8 +1,9 @@
 define([
     'underscore',
     'backbone',
+    'colors',
     'models/Notification'
-], function (_, Backbone, Notification) {
+], function (_, Backbone, Colors, Notification) {
     'use strict';
 
     var Records = Backbone.Collection.extend({
@@ -12,6 +13,10 @@ define([
         },
 
         url: 'scripts/api/notifications.json',
+
+        initialize: function () {
+            this.colors = new Colors();
+        },
 
         getColumnChart: function () {
             var attrs = {
@@ -129,23 +134,76 @@ define([
         },
 
         getMapOptions: function () {
-            var options = [{
-                    map: {
-                        options: {
-                            center: [23.57873, 121.0227],
-                            zoom: 7
+            var options = [],
+                self = this;
+
+            this.colors.count = 0;
+
+            this.each(function (record) {
+                if (record.get('selected')) {
+                    // Generate random location for demo
+                    (function() {
+                        var lat = 23.39781,
+                            lng = 120.26051499,
+                            min = 0.01,
+                            max = 1.5;
+
+                        record.logs.each(function(log) {
+                            log.set({ lat: (lat + Math.random() * (max - min) + min) });
+                            log.set({ lng: (lng + Math.random() * (max - min) + min) });
+                        });
+                    })();
+
+                    var markers = [],
+                        color = self.colors.getColor();
+
+                    markers = record.logs.map(function (log) {
+                        return {
+                            content: log.get('content'),
+                            latLng: [log.get('lat'), log.get('lng')]
+                        };
+                    });
+
+                    options.push({
+                        map: {
+                            options: {
+                                center: [23.57873, 121.0227],
+                                zoom: 7,
+                                mapTypeControlOptions: {
+                                    style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
+                                }
+                            }
+                        },
+                        marker: {
+                            values: markers,
+                            cluster: {
+                                radius: 100,
+                                0: {
+                                    content: "<div class='cluster cluster-s' style='background: " + 
+                                        color + "''>CLUSTER_COUNT</div>",
+                                    width: 50,
+                                    height: 50
+                                },
+                                5: {
+                                    content: "<div class='cluster cluster-m' style='background: " + 
+                                        color + "''>CLUSTER_COUNT</div>",
+                                    width: 80,
+                                    height: 80
+                                },
+                                10: {
+                                    content: "<div class='cluster cluster-l' style='background: " + 
+                                        color + "''>CLUSTER_COUNT</div>",
+                                    width: 110,
+                                    height: 110
+                                }
+                            }
                         }
-                    }
-                }];
-
-
-            function _createMarker (log) {
-
-            }
+                    });
+                }
+            });
 
             return options;
-        },
-
+        }
 
     });
 
