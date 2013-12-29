@@ -29,7 +29,6 @@ define([
         },
 
         toggle: function () {
-            console.log(this)
             this.set({
                 selected: !this.get('selected')
             });

@@ -56,16 +56,12 @@ require.config({
 require([
     'backbone',
     'bootstrap_tab',
-    'views/app',
     'routers/router'
-], function (Backbone, BootstrapTab, AppView, Router) {
+], function (Backbone, BootstrapTab, Router) {
     Backbone.history.start();
 
     // Initialize the router
     new Router();
-
-    // Initialize the application view
-    new AppView();
 });
 
 require(['pace'], function (Pace) {
