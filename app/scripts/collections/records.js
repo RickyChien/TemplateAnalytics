@@ -8,11 +8,7 @@ define([
 
     var Records = Backbone.Collection.extend({
 
-        model: function (attrs, options) {
-            return new Notification(attrs, options);
-        },
-
-        url: 'scripts/api/notifications.json',
+        model: Notification,
 
         initialize: function () {
             this.colors = new Colors();
