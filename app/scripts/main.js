@@ -48,17 +48,28 @@ require.config({
         text: '../bower_components/requirejs-text/text',
         highcharts: '../bower_components/highcharts/highcharts',
         gmap3: '../bower_components/gmap3/gmap3',
-        colors: 'addons/colors'
+        colors: 'addons/colors',
+        pace: '../bower_components/pace/pace'
     }
 });
 
 require([
     'backbone',
     'bootstrap_tab',
-    'views/app'
-], function (Backbone, BootstrapTab, AppView) {
+    'views/app',
+    'routers/router'
+], function (Backbone, BootstrapTab, AppView, Router) {
     Backbone.history.start();
+
+    // Initialize the router
+    new Router();
 
     // Initialize the application view
     new AppView();
+});
+
+require(['pace'], function (Pace) {
+    Pace.start({
+        target: '.progress-wrapper'
+    });
 });

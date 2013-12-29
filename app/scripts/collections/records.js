@@ -2,7 +2,7 @@ define([
     'underscore',
     'backbone',
     'colors',
-    'models/Notification'
+    'models/notification'
 ], function (_, Backbone, Colors, Notification) {
     'use strict';
 
