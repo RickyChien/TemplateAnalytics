@@ -15,6 +15,7 @@ define([
 
         initialize: function () {
             this.$map = this.$('#map-canvas');
+            
             this.render();
         },
 

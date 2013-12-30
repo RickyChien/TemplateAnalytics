@@ -13,7 +13,8 @@ define([
         },
 
         render: function () {
-            $('<input>', { type: 'checkbox' }).wrap('<td>').parent().appendTo(this.el);
+            $('<input>', { type: 'checkbox' }).attr('checked', this.model.get('selected'))
+                .wrap('<td>').parent().appendTo(this.el);
             $('<td>').text(this.model.get('id')).appendTo(this.el);
             $('<td>').text(this.model.get('content')).appendTo(this.el);
             $('<td>').text(this.model.get('read_count')).appendTo(this.el);
@@ -32,21 +33,20 @@ define([
 
     var GridView = Backbone.View.extend({
 
-        el: '#view',
+        el: '#content',
 
         initialize: function () {
-            this.listenTo(this.collection, 'add', this.addRow);
-
-            this.collection.fetch();
+            this.listenTo(this.collection, 'reset', this.render);
         },
 
         render: function () {
-            return this;
-        },
+            this.$('#grid-data tbody tr').remove();
+            this.collection.each(function (model) {
+                var view = new GridItemView({ model: model });
+                this.$('#grid-data tbody').append(view.render().el);
+            }, this);
 
-        addRow: function (model) {
-            var view = new GridItemView({ model: model });
-            this.$('#grid-data tbody').append(view.render().el);
+            return this;
         }
 
     });

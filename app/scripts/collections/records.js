@@ -2,13 +2,13 @@ define([
     'underscore',
     'backbone',
     'colors',
-    'models/notification'
-], function (_, Backbone, Colors, Notification) {
+    'models/record'
+], function (_, Backbone, Colors, Record) {
     'use strict';
 
     var Records = Backbone.Collection.extend({
 
-        model: Notification,
+        model: Record,
 
         initialize: function () {
             this.colors = new Colors();

@@ -2,8 +2,9 @@ define([
     'underscore',
     'backbone',
     'jquery_ui_slider',
-    'jquery_ui_timepicker'
-], function (_, Backbone, Slider, Timepicker) {
+    'jquery_ui_timepicker',
+    'views/grid'
+], function (_, Backbone, Slider, Timepicker, GridView) {
     'use strict';
 
     var AppView = Backbone.View.extend({
@@ -11,9 +12,9 @@ define([
         el: '#view',
 
         events: {
-            'click #grid-tab': 'renderGrid',
-            'click #chart-tab': 'renderChart',
-            'click #map-tab': 'renderMap'
+            'click #grid-tab': 'showGrid',
+            'click #chart-tab': 'showChart',
+            'click #map-tab': 'showMap'
         },
 
         initialize: function () {
@@ -21,31 +22,41 @@ define([
             this.$end = this.$('#end-time');
             this.$start.datetimepicker();
             this.$end.datetimepicker();
+            this.$gridTab = this.$('#grid-tab');
         },
 
-        renderGrid: function () {
-            var self = this;
+        render: function () {
+            this.$gridTab.click();
+        },
+
+        update: function (models) {
+            this.collection.reset(models);
+        },
+
+        showGrid: function () {
             if (!this.GridView) {
-                require(['views/grid'], function (GridView) {
-                    self.GridView = new GridView({ collection: self.records });
-                });
+                this.GridView = new GridView({ collection: this.collection });
             }
         },
 
-        renderChart: function () {
+        showChart: function () {
             var self = this;
+
+            // Loading script on demand
             if (!this.ChartView) {
                 require(['views/chart'], function (ChartView) {
-                    self.ChartView = new ChartView({ collection: self.records });
+                    self.ChartView = new ChartView({ collection: self.collection });
                 });
             }
         },
 
-        renderMap: function () {
+        showMap: function () {
             var self = this;
+
+            // Loading script on demand
             if (!this.MapView) {
                 require(['views/map'], function (MapView) {
-                    self.MapView = new MapView({ collection: self.records });
+                    self.MapView = new MapView({ collection: self.collection });
                 });
             }
         }

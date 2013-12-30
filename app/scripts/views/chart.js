@@ -7,7 +7,7 @@ define([
 
     var ChartView = Backbone.View.extend({
 
-        el: '#view',
+        el: '#content',
 
         events: {
             'click #chart-tab': 'render'

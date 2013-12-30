@@ -16,6 +16,9 @@ require.config({
         bootstrap: {
             deps: ['jquery'],
         },
+        bootstrap_affix: {
+            deps: ['jquery']
+        },
         bootstrap_tab: {
             deps: ['jquery']
         },
@@ -59,7 +62,7 @@ require([
     'routers/router'
 ], function (Backbone, BootstrapTab, Router) {
     Backbone.history.start();
-
+    
     // Initialize the router
     new Router();
 });
