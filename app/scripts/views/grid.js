@@ -20,7 +20,7 @@ define([
         '),
 
         render: function () {
-            this.$el.html(this.template(this.parse(this.model.attributes, ['selected'])));
+            this.$el.html(this.template(this.parse(this.model.attributes, ['selected', 'logs'])));
 
             return this;
         },
@@ -68,7 +68,7 @@ define([
 
         render: function () {
             this.$('thead').html(this.template({
-                attrs: this.parse(this.collection.models[0].attributes, ['selected'])
+                attrs: this.parse(this.collection.models[0].attributes, ['selected', 'logs'])
             }));
             this.$('tbody tr').remove();
             this.collection.each(function (model) {

@@ -21,20 +21,18 @@ define([
         },
 
         initialize: function () {
-            this.logs = new Logs();
+            this.set('logs', new Logs());
         },
 
         setLogsUrl: function (url) {
-            this.logs.url = url;
+            this.get('logs').url = url;
         },
 
         toggle: function () {
-            this.set({
-                selected: !this.get('selected')
-            });
+            this.set({ selected: !this.get('selected') });
 
-            if (this.get('selected') === true && this.logs.models.length === 0) {
-                this.logs.fetch();
+            if (this.get('selected') === true && this.get('logs').models.length === 0) {
+                this.get('logs').fetch();
             }
         }
 

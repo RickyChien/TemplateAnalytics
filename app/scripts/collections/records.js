@@ -102,7 +102,7 @@ define([
                         seriesData = [],
                         date;
 
-                    record.logs.each(function (log) {
+                    record.get('logs').each(function (log) {
                         date = new Date(log.get('updated_at'));
                         date = date.toString().substring(0, 18) + ':00';
 
@@ -144,7 +144,7 @@ define([
                             min = 0.01,
                             max = 1.5;
 
-                        record.logs.each(function(log) {
+                        record.get('logs').each(function(log) {
                             log.set({ lat: (lat + Math.random() * (max - min) + min) });
                             log.set({ lng: (lng + Math.random() * (max - min) + min) });
                         });
@@ -153,7 +153,7 @@ define([
                     var markers = [],
                         color = self.colors.getColor();
 
-                    markers = record.logs.map(function (log) {
+                    markers = record.get('logs').map(function (log) {
                         return {
                             content: log.get('content'),
                             latLng: [log.get('lat'), log.get('lng')]
