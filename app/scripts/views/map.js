@@ -22,7 +22,6 @@ define([
         },
 
         render: function () {
-            console.log('map render')
             var self = this;
 
             // Clear maps data

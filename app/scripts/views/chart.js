@@ -23,7 +23,6 @@ define([
         },
 
         render: function () {
-            console.log('chart render')
             this.$columnChart.highcharts(this.collection.columnChartOptions);
             this.$lineChart.highcharts(this.collection.lineChartOptions);
             return this;
