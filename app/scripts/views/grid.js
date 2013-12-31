@@ -12,41 +12,91 @@ define([
             'click input': 'toggleSelected'
         },
 
+        template: _.template('\
+            <td><input type="checkbox" <%= selected === true ? \'checked\' : \'\' %>></td>\
+            <% _.each(attrs, function (attr) { %>\
+                <td><%= attr %></td>\
+            <% }); %>\
+        '),
+
         render: function () {
-            $('<input>', { type: 'checkbox' }).attr('checked', this.model.get('selected'))
-                .wrap('<td>').parent().appendTo(this.el);
-            $('<td>').text(this.model.get('id')).appendTo(this.el);
-            $('<td>').text(this.model.get('content')).appendTo(this.el);
-            $('<td>').text(this.model.get('read_count')).appendTo(this.el);
-            $('<td>').text(this.model.get('unread_count')).appendTo(this.el);
-            $('<td>').text(this.model.get('rate') + " %").appendTo(this.el);
-            $('<td>').text(this.model.get('created_at')).appendTo(this.el);
+            this.$el.html(this.template(this.parse(this.model.attributes, ['selected'])));
 
             return this;
         },
 
         toggleSelected: function () {
             this.model.toggle();
+        },
+
+        parse: function (attrs, skips) {
+            var data = [],
+                index;
+            for (var attr in attrs) {
+                if (!_.contains(skips, attr)) {
+                    if (attr !== 'created_at') {
+                        data.push(attrs[attr]);
+                    }
+                }
+            }
+
+            data.push(attrs.created_at);
+
+            return {
+                selected: attrs.selected,
+                attrs: data
+            };
         }
 
     });
 
     var GridView = Backbone.View.extend({
 
-        el: '#content',
+        el: '#grid-data',
+
+        template: _.template('\
+            <tr>\
+            <% attrs.forEach(function (attr) { %>\
+                <th><%= attr %></th>\
+            <% }); %>\
+            </tr>\
+        '),
 
         initialize: function () {
             this.listenTo(this.collection, 'reset', this.render);
         },
 
         render: function () {
-            this.$('#grid-data tbody tr').remove();
+            this.$('thead').html(this.template({
+                attrs: this.parse(this.collection.models[0].attributes, ['selected'])
+            }));
+            this.$('tbody tr').remove();
             this.collection.each(function (model) {
                 var view = new GridItemView({ model: model });
-                this.$('#grid-data tbody').append(view.render().el);
+                this.$('tbody').append(view.render().el);
             }, this);
 
             return this;
+        },
+
+        parse: function (attrs, skips) {
+            var data = ['Select'],
+                index;
+
+            for (var attr in attrs) {
+                if (!_.contains(skips, attr)) {
+                    attr = attr[0].toUpperCase() + attr.slice(1);
+                    index = attr.indexOf('_');
+                    attr = attr.substring(0, (index === -1) ? attr.length : index);
+                    if (attr !== 'Created') {
+                        data.push(attr);
+                    }
+                }
+            }
+
+            data.push('Create Time');
+
+            return data;
         }
 
     });
