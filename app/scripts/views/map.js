@@ -2,7 +2,7 @@ define([
     'underscore',
     'backbone',
     'gmap3'
-], function (_, Backbone) {
+], function (_, Backbone, GMap) {
     'use strict';
 
     var MapView = Backbone.View.extend({
@@ -10,18 +10,20 @@ define([
         el: '#view',
 
         events: {
-            'click #map-tab': 'render'
+            'click #map-tab': 'toggle'
         },
 
         initialize: function () {
             this.$map = this.$('#map-canvas');
-            
-            this.render();
+
+            this.listenTo(this.collection, 'map_change', this.render);
+
+            this.toggle();
         },
 
         render: function () {
-            var mapOpts = this.collection.getMapOptions(),
-                self = this;
+            console.log('map render')
+            var self = this;
 
             // Clear maps data
             this.$map.gmap3({
@@ -31,11 +33,15 @@ define([
             });
 
             // Setup new maps data
-            mapOpts.forEach(function (opt) {
+            this.collection.mapOptions.forEach(function (opt) {
                 self.$map.gmap3(opt);
             });
 
             return this;
+        },
+
+        toggle: function () {
+            this.collection.updateMap();
         }
 
     });

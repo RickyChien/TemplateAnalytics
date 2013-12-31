@@ -14,8 +14,21 @@ define([
             this.colors = new Colors();
         },
 
-        getColumnChart: function () {
-            var attrs = {
+        updateChart: function () {
+            var options = [];
+
+            this.columnChartOptions = this.updateColumnChart();
+            this.lineChartOptions = this.updateLineChart();
+            this.trigger('chart_change');
+
+            options.push(this.columnChartOptions);
+            options.push(this.columnChartOptions);
+
+            return options;
+        },
+
+        updateColumnChart: function () {
+            var options = {
                     chart: {
                         type: 'column'
                     },
@@ -61,15 +74,15 @@ define([
                 }
             });
 
-            attrs.xAxis.categories = categories;
-            attrs.series[0].data = unreads;
-            attrs.series[1].data = reads;
+            options.xAxis.categories = categories;
+            options.series[0].data = unreads;
+            options.series[1].data = reads;
 
-            return attrs;
+            return options;
         },
 
-        getLineChart: function () {
-            var attrs = {
+        updateLineChart: function () {
+            var options = {
                     chart: {
                         type: 'line'
                     },
@@ -124,12 +137,12 @@ define([
                 }
             });
 
-            attrs.series = series;
+            options.series = series;
 
-            return attrs;
+            return options;
         },
 
-        getMapOptions: function () {
+        updateMap: function () {
             var options = [],
                 self = this;
 
@@ -197,6 +210,9 @@ define([
                     });
                 }
             });
+
+            this.mapOptions = options;
+            this.trigger('map_change');
 
             return options;
         }

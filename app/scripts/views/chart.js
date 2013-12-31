@@ -10,20 +10,27 @@ define([
         el: '#view',
 
         events: {
-            'click #chart-tab': 'render'
+            'click #chart-tab': 'toggle'
         },
 
         initialize: function () {
             this.$columnChart = this.$('#column');
             this.$lineChart = this.$('#line');
 
-            this.render();
+            this.listenTo(this.collection, 'chart_change', this.render);
+
+            this.toggle();
         },
 
         render: function () {
-            this.$columnChart.highcharts(this.collection.getColumnChart());
-            this.$lineChart.highcharts(this.collection.getLineChart());
+            console.log('chart render')
+            this.$columnChart.highcharts(this.collection.columnChartOptions);
+            this.$lineChart.highcharts(this.collection.lineChartOptions);
             return this;
+        },
+
+        toggle: function () {
+            this.collection.updateChart();
         }
 
     });
