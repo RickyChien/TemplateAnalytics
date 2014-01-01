@@ -9,7 +9,7 @@ define([
         tagName: 'tr',
 
         events: {
-            'click input': 'toggleSelected'
+            'click input': 'toggle'
         },
 
         template: _.template('\
@@ -25,7 +25,7 @@ define([
             return this;
         },
 
-        toggleSelected: function () {
+        toggle: function () {
             this.model.toggle();
         },
 

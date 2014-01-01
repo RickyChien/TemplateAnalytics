@@ -61,22 +61,15 @@ define([
                             name: 'Read',
                             data: []
                     }]
-                },
-                categories = [],
-                unreads = [],
-                reads = [];
+                };
 
             this.each(function (record) {
                 if (record.get('selected')) {
-                    categories.push('ID ' + record.id);
-                    reads.push(record.get('read_count'));
-                    unreads.push(record.get('unread_count'));
+                    options.xAxis.categories.push('ID ' + record.id);
+                    options.series[0].data.push(record.get('unread_count'));
+                    options.series[1].data.push(record.get('read_count'));
                 }
             });
-
-            options.xAxis.categories = categories;
-            options.series[0].data = unreads;
-            options.series[1].data = reads;
 
             return options;
         },
@@ -106,8 +99,7 @@ define([
                         valueSuffix: ' reads'
                     },
                     series: []
-                },
-                series = [];
+                };
 
             this.each(function (record) {
                 if (record.get('selected')) {
@@ -130,14 +122,12 @@ define([
                         seriesData.push([date.getTime(), reads[time]]);
                     }
 
-                    series.push({
+                    options.series.push({
                         name: 'ID ' + record.id,
                         data: seriesData.sort()
                     });
                 }
             });
-
-            options.series = series;
 
             return options;
         },
