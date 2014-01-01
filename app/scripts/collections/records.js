@@ -98,12 +98,20 @@ define([
                     tooltip: {
                         valueSuffix: ' reads'
                     },
+                    plotOptions: {
+                        line: {
+                            dataLabels: {
+                                enabled: true
+                            },
+                            enableMouseTracking: false
+                        }
+                    },
                     series: []
                 };
 
             this.each(function (record) {
                 if (record.get('selected')) {
-                    var reads = {},
+                    var values = {},
                         seriesData = [],
                         date;
 
@@ -112,14 +120,14 @@ define([
                         date = date.toString().substring(0, 18) + ':00';
 
                         if (log.get('status') >= 2) {
-                            reads[date] = reads[date] || 0;
-                            ++reads[date];
+                            values[date] = values[date] || 0;
+                            ++values[date];
                         }
                     });
 
-                    for (var time in reads) {
+                    for (var time in values) {
                         date = new Date(time);
-                        seriesData.push([date.getTime(), reads[time]]);
+                        seriesData.push([date.getTime(), values[time]]);
                     }
 
                     options.series.push({

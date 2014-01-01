@@ -11,6 +11,10 @@ define([
             Record.prototype.initialize.call(this);
 
             this.setLogsUrl('scripts/api/banners/' + this.id + '.json');
+
+            this.set({
+                rate: (this.get('click_count') / (this.get('click_count') + this.get('view_count')) * 100).toFixed(2) + ' %'
+            });
         }
 
     });
