@@ -12,9 +12,9 @@ define([
 
             this.setLogsUrl('scripts/api/topsites/' + this.id + '.json');
 
-            this.set({
-                rate: (this.get('read_count') / (this.get('read_count') + this.get('unread_count')) * 100).toFixed(2) + ' %'
-            });
+            this.set('key', 'content');
+            this.set('rate', (this.get('read_count') / (this.get('read_count') +
+                this.get('unread_count')) * 100).toFixed(2) + ' %');
         }
 
     });

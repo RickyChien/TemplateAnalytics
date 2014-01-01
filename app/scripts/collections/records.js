@@ -141,7 +141,7 @@ define([
         },
 
         updateMap: function () {
-            var options = [],
+            var clusters = [],
                 self = this;
 
             this.colors.count = 0;
@@ -166,53 +166,22 @@ define([
 
                     markers = record.get('logs').map(function (log) {
                         return {
-                            content: log.get('content'),
+                            data: log.get(record.get('key')),
                             latLng: [log.get('lat'), log.get('lng')]
                         };
                     });
 
-                    options.push({
-                        map: {
-                            options: {
-                                center: [23.57873, 121.0227],
-                                zoom: 7,
-                                mapTypeControlOptions: {
-                                    style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
-                                }
-                            }
-                        },
-                        marker: {
-                            values: markers,
-                            cluster: {
-                                radius: 100,
-                                0: {
-                                    content: "<div class='cluster cluster-s' style='background: " + 
-                                        color + "''>CLUSTER_COUNT</div>",
-                                    width: 50,
-                                    height: 50
-                                },
-                                5: {
-                                    content: "<div class='cluster cluster-m' style='background: " + 
-                                        color + "''>CLUSTER_COUNT</div>",
-                                    width: 80,
-                                    height: 80
-                                },
-                                10: {
-                                    content: "<div class='cluster cluster-l' style='background: " + 
-                                        color + "''>CLUSTER_COUNT</div>",
-                                    width: 110,
-                                    height: 110
-                                }
-                            }
-                        }
+                    clusters.push({
+                        color: color,
+                        markers: markers
                     });
                 }
             });
 
-            this.mapOptions = options;
+            this.mapOptions = clusters;
             this.trigger('map_change');
 
-            return options;
+            return clusters;
         }
 
     });
