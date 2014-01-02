@@ -1,0 +1,10 @@
+[
+  {"id":1,"udid":10001,"name":"Banner 3","view_count":876,"click_count":1432,"download_count":9851,"lat":23.557017988017574,"lng":121.07184816277805,"updated_at":"2013/11/21 08:21"},
+  {"id":2,"udid":10002,"name":"Banner 3","view_count":1455,"click_count":968,"download_count":1552,"lat":23.701798801757415,"lng":121.17184816277805,"updated_at":"2013/11/21 08:31"},
+  {"id":3,"udid":10003,"name":"Banner 3","view_count":982,"click_count":1230,"download_count":7867,"lat":23.568117988017574,"lng":121.27184816277805,"updated_at":"2013/11/21 09:12"},
+  {"id":4,"udid":10004,"name":"Banner 3","view_count":1022,"click_count":658,"download_count":528,"lat":23.599017988017574,"lng":121.37184816277805,"updated_at":"2013/11/21 09:25"},
+  {"id":5,"udid":10005,"name":"Banner 3","view_count":1568,"click_count":968,"download_count":2124,"lat":23.557017988017574,"lng":121.05284816277805,"updated_at":"2013/11/21 09:48"},
+  {"id":6,"udid":10006,"name":"Banner 3","view_count":1448,"click_count":750,"download_count":2200,"lat":25.139900000000151,"lng":121.61577200015811,"updated_at":"2013/11/21 10:50"},
+  {"id":7,"udid":10007,"name":"Banner 3","view_count":1335,"click_count":809,"download_count":7881,"lat":24.157017988017574,"lng":121.14815416277805,"updated_at":"2013/11/21 11:20"},
+  {"id":8,"udid":10008,"name":"Banner 3","view_count":987,"click_count":458,"download_count":1891,"lat":25.057017988017574,"lng":121.37184816277805,"updated_at":"2013/11/21 11:59"}
+]
