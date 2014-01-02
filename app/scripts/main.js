@@ -48,9 +48,8 @@ require.config({
         underscore: '../bower_components/underscore/underscore',
         bootstrap: '../bower_components/sass-bootstrap/dist/js/bootstrap',
         bootstrap_tab: '../bower_components/sass-bootstrap/js/tab',
-        text: '../bower_components/requirejs-text/text',
-        highcharts: '../bower_components/highcharts/highcharts',
-        gmap3: '../bower_components/gmap3/gmap3',
+        highcharts: '//code.highcharts.com/highcharts',
+        gmap3: '//cdn.jsdelivr.net/gmap3/5.1.1/gmap3.min',
         colors: 'addons/colors',
         pace: '../bower_components/pace/pace'
     }
@@ -59,8 +58,9 @@ require.config({
 require([
     'backbone',
     'bootstrap_tab',
+    'async',
     'routers/router'
-], function (Backbone, BootstrapTab, Router) {
+], function (Backbone, BootstrapTab, Async, Router) {
     Backbone.history.start();
     
     // Initialize the router

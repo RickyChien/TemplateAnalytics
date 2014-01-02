@@ -1,9 +1,8 @@
-define([
-    'underscore',
-    'backbone',
-    'highcharts'
-], function (_, Backbone, Highcharts) {
+define(function (require) {
     'use strict';
+
+    var Underscore = require('underscore'),
+        Backbone = require('backbone');
 
     var ChartView = Backbone.View.extend({
 
@@ -29,7 +28,12 @@ define([
         },
 
         toggle: function () {
-            this.collection.updateChart();
+            var self = this;
+
+            // Load script on demand
+            require(['highcharts'], function () {
+                self.collection.updateChart();
+            });
         }
 
     });

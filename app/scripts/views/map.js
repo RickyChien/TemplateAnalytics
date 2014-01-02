@@ -1,9 +1,8 @@
-define([
-    'underscore',
-    'backbone',
-    'gmap3'
-], function (_, Backbone, GMap) {
+define(function (require) {
     'use strict';
+
+    var Underscore = require('underscore'),
+        Backbone = require('backbone');
 
     var MapView = Backbone.View.extend({
 
@@ -97,7 +96,12 @@ define([
         },
 
         toggle: function () {
-            this.collection.updateMap();
+            var self = this;
+
+            // Load script on demand
+            require(['gmap3'], function () {
+                self.collection.updateMap();
+            });
         }
 
     });

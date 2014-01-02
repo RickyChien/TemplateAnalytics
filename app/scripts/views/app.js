@@ -3,8 +3,10 @@ define([
     'backbone',
     'jquery_ui_slider',
     'jquery_ui_timepicker',
-    'views/grid'
-], function (_, Backbone, Slider, Timepicker, GridView) {
+    'views/grid',
+    'views/chart',
+    'views/map'
+], function (_, Backbone, Slider, Timepicker, GridView, ChartView, MapView) {
     'use strict';
 
     var AppView = Backbone.View.extend({
@@ -34,31 +36,15 @@ define([
         },
 
         showGrid: function () {
-            if (!this.GridView) {
-                this.GridView = new GridView({ collection: this.collection });
-            }
+            this.GridView = this.GridView || new GridView({ collection: this.collection });
         },
 
         showChart: function () {
-            var self = this;
-
-            // Loading script on demand
-            if (!this.ChartView) {
-                require(['views/chart'], function (ChartView) {
-                    self.ChartView = new ChartView({ collection: self.collection });
-                });
-            }
+            this.ChartView = this.ChartView || new ChartView({ collection: this.collection });
         },
 
         showMap: function () {
-            var self = this;
-
-            // Loading script on demand
-            if (!this.MapView) {
-                require(['views/map'], function (MapView) {
-                    self.MapView = new MapView({ collection: self.collection });
-                });
-            }
+            this.MapView = this.MapView || new MapView({ collection: this.collection });
         }
 
     });
