@@ -105,14 +105,6 @@ define([
                     tooltip: {
                         valueSuffix: ' reads'
                     },
-                    plotOptions: {
-                        line: {
-                            dataLabels: {
-                                enabled: true
-                            },
-                            enableMouseTracking: false
-                        }
-                    },
                     series: []
                 };
 
