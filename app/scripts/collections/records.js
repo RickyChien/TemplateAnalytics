@@ -54,20 +54,27 @@ define([
                             stacking: 'percent'
                         }
                     },
-                    series: [{
-                            name: 'Unread',
-                            data: []
-                        }, {
-                            name: 'Read',
-                            data: []
-                    }]
-                };
+                    series: []
+                },
+                series = options.series;
+
+            for (var attr in this.models[0].attributes) {
+                if (attr.indexOf('_count') !== -1) {
+                    series.push({
+                        name: attr[0].toUpperCase() + attr.substring(1, attr.indexOf('_count')),
+                        data: []
+                    });
+                }
+            }
+            console.log(series)
 
             this.each(function (record) {
                 if (record.get('selected')) {
                     options.xAxis.categories.push('ID ' + record.id);
-                    options.series[0].data.push(record.get('unread_count'));
-                    options.series[1].data.push(record.get('read_count'));
+                    series.forEach(function (seriesItem) {
+                        var name = seriesItem.name;
+                        seriesItem.data.push(record.get(name[0].toLowerCase() + name.slice(1) + '_count'));
+                    });
                 }
             });
 

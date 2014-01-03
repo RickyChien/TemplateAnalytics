@@ -26,6 +26,7 @@ define([
 
             if (!records) {
                 records = this[type] = new Records([], {
+
                     model: function (attrs, options) {
                         if (type === 'notifications') {
                             return new Notification(attrs, options);
@@ -35,7 +36,9 @@ define([
                             return new Banner(attrs, options);
                         }
                     },
+
                     url: 'scripts/api/' + type + '.json'
+
                 });
                 records.fetch().then(function () {
                     self.AppView.update(records.models);
