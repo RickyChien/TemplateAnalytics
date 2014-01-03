@@ -4,6 +4,8 @@ define([
 ], function (_, Backbone) {
     'use strict';
 
+    var skipsAttrs = ['selected', 'key', 'logs'];
+
     var GridItemView = Backbone.View.extend({
 
         tagName: 'tr',
@@ -20,7 +22,7 @@ define([
         '),
 
         render: function () {
-            this.$el.html(this.template(this.parse(this.model.attributes, ['selected', 'logs'])));
+            this.$el.html(this.template(this.parse(this.model.attributes, skipsAttrs)));
 
             return this;
         },
@@ -68,7 +70,7 @@ define([
 
         render: function () {
             this.$('thead').html(this.template({
-                attrs: this.parse(this.collection.models[0].attributes, ['selected', 'logs'])
+                attrs: this.parse(this.collection.models[0].attributes, skipsAttrs)
             }));
             this.$('tbody tr').remove();
             this.collection.each(function (model) {

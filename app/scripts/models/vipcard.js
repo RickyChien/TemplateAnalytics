@@ -5,7 +5,7 @@ define([
 ], function (_, Backbone, Record) {
     'use strict';
 
-    var VIPCard = Record.extend({
+    var Vipcard = Record.extend({
 
         initialize: function () {
             Record.prototype.initialize.call(this);
@@ -19,5 +19,5 @@ define([
 
     });
 
-    return VIPCard;
+    return Vipcard;
 });
