@@ -1,8 +1,8 @@
 $icon-font-path: "../bower_components/sass-bootstrap/fonts/";
 
 @import 'sass-bootstrap/lib/bootstrap';
-@import 'jquery-ui/themes/flick/jquery-ui';
-@import 'jqueryui-timepicker-addon/src/jquery-ui-timepicker-addon';
+@import 'jquery-ui';
+@import 'jquery-ui-timepicker-addon';
 
 .browsehappy {
     margin: 0.2em 0;
