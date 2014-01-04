@@ -6,7 +6,7 @@ define(function (require) {
 
     var MapView = Backbone.View.extend({
 
-        el: '#view',
+        el: '#visualization',
 
         events: {
             'click #map-tab': 'toggle'

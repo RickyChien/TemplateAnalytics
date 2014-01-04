@@ -54,7 +54,7 @@ define([
 
     var GridView = Backbone.View.extend({
 
-        el: '#grid-data',
+        el: '#visualization',
 
         template: _.template('\
             <tr>\

@@ -66,7 +66,6 @@ define([
                     });
                 }
             }
-            console.log(series)
 
             this.each(function (record) {
                 if (record.get('selected')) {
@@ -82,59 +81,66 @@ define([
         },
 
         updateLineChart: function () {
-            var options = {
-                    chart: {
-                        type: 'line'
-                    },
-                    title: {
-                        text: 'Line Chart'
-                    },
-                    xAxis: {
-                        type: 'datetime'
-                    },
-                    yAxis: {
-                        title: {
-                            text: 'Reads'
+            var options = [],
+                option;
+
+            for (var attr in this.models[0].attributes) {
+                if (attr.indexOf('_count') !== -1) {
+                    option = {
+                        chart: {
+                            type: 'line'
                         },
-                        plotLines: [{
-                            value: 0,
-                            width: 1,
-                            color: '#808080'
-                        }]
-                    },
-                    tooltip: {
-                        valueSuffix: ' reads'
-                    },
-                    series: []
-                };
+                        title: {
+                            text: 'Line Chart'
+                        },
+                        xAxis: {
+                            type: 'datetime'
+                        },
+                        yAxis: {
+                            title: {
+                                text: attr[0].toUpperCase() + attr.substring(1, attr.indexOf('_count')) + 's'
+                            },
+                            plotLines: [{
+                                value: 0,
+                                width: 1,
+                                color: '#808080'
+                            }]
+                        },
+                        tooltip: {
+                            valueSuffix: ' ' + attr.substring(0, attr.indexOf('_count')) + 's'
+                        },
+                        series: []
+                    };
 
-            this.each(function (record) {
-                if (record.get('selected')) {
-                    var values = {},
-                        seriesData = [],
-                        date;
+                    this.each(function (record) {
+                        if (record.get('selected')) {
+                            var values = {},
+                                seriesData = [],
+                                date;
 
-                    record.get('logs').each(function (log) {
-                        date = new Date(log.get('updated_at'));
-                        date = date.toString().substring(0, 18) + ':00';
+                            record.get('logs').each(function (log) {
+                                date = new Date(log.get('updated_at'));
+                                date = date.toString().substring(0, 18) + ':00';
 
-                        if (log.get('status') >= 2) {
-                            values[date] = values[date] || 0;
-                            ++values[date];
+                                values[date] = values[date] || 0;
+                                values[date] += log.get(attr);
+                            });
+
+                            for (var time in values) {
+                                date = new Date(time);
+                                seriesData.push([date.getTime(), values[time]]);
+                            }
+
+                            option.series.push({
+                                name: 'ID ' + record.id,
+                                data: seriesData.sort()
+                            });
                         }
                     });
 
-                    for (var time in values) {
-                        date = new Date(time);
-                        seriesData.push([date.getTime(), values[time]]);
-                    }
-
-                    options.series.push({
-                        name: 'ID ' + record.id,
-                        data: seriesData.sort()
-                    });
+                    options.push(option);
                 }
-            });
+            }
 
             return options;
         },

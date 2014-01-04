@@ -189,13 +189,13 @@ body {
   width: 100% !important;
 }
 
-td { 
+th, td {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-td.msg {
+th:nth-child(3), td:nth-child(3) {
   white-space: normal;
   overflow: visible; 
   text-overflow: ellipsis;

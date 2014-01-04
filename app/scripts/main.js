@@ -16,9 +16,6 @@ require.config({
         bootstrap: {
             deps: ['jquery'],
         },
-        bootstrap_affix: {
-            deps: ['jquery']
-        },
         bootstrap_tab: {
             deps: ['jquery']
         },

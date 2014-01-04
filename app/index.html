@@ -22,7 +22,6 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-
         <div class="container">
             <div class="header">
                 <h3 class="text-muted">TemplateAnalytics</h3>
@@ -62,16 +61,31 @@
                         </form>
                     </div>
 
-                    <ul id="tabs" class="nav nav-tabs nav-justified">
-                        <li><a id="chart-tab" href="#chart" data-toggle="tab">Chart</a></li>
-                        <li class="active"><a id="grid-tab" href="#grid" data-toggle="tab">Grid</a></li>
-                        <li><a id="map-tab" href="#map" data-toggle="tab">Map</a></li>
-                    </ul>
+                    <div id="visualization">
+                        <ul id="tabs" class="nav nav-tabs nav-justified">
+                            <li><a id="chart-tab" href="#chart" data-toggle="tab">Chart</a></li>
+                            <li class="active"><a id="grid-tab" href="#grid" data-toggle="tab">Grid</a></li>
+                            <li><a id="map-tab" href="#map" data-toggle="tab">Map</a></li>
+                        </ul>
 
-                    <div>
                         <div class="well">
                             <div class="progress-wrapper"></div>
                             <div id="content" class="tab-content">
+
+                                <div id="chart" class="panel panel-info tab-pane fade">
+                                    <div class="panel-heading">Chart</div>
+                                    <div class="panel-body">
+                                        <div class="alert alert-success">
+                                            <span class="glyphicon glyphicon-info-sign"></span>
+                                            Tips : Select item(s) from Grid to see it's Chart visualization.
+                                        </div>
+                                        <div id="column"></div>
+                                        <div>
+                                            <ul id="line-tabs" class="nav nav-tabs nav-justified"></ul>
+                                            <div id="line" class="tab-content"></div>
+                                        </div>
+                                    </div>
+                                </div>
 
                                 <div id="grid" class="panel panel-info tab-pane fade in active">
                                     <div class="panel-heading">Grid</div>
@@ -89,18 +103,6 @@
                                     </div>
                                 </div>
 
-                                <div id="chart" class="panel panel-info tab-pane fade">
-                                    <div class="panel-heading">Chart</div>
-                                    <div class="panel-body">
-                                        <div class="alert alert-success">
-                                            <span class="glyphicon glyphicon-info-sign"></span>
-                                            Tips : Select item(s) from Grid to see it's Chart visualization.
-                                        </div>
-                                        <div id="column"></div>
-                                        <div id="line"></div>
-                                    </div>
-                                </div>
-
                                 <div id="map" class="panel panel-info tab-pane fade">
                                     <div class="panel-heading">Map</div>
                                     <div class="panel-body">
@@ -113,7 +115,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
