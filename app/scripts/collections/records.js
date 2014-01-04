@@ -171,7 +171,7 @@ define([
 
                     markers = record.get('logs').map(function (log) {
                         return {
-                            data: log.get(record.get('key')),
+                            data: record.get(record.get('key')),
                             latLng: [log.get('lat'), log.get('lng')]
                         };
                     });
