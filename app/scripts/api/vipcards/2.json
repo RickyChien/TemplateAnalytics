@@ -1,7 +1,7 @@
 [
-  {"id":1,"udid":10001,"name":"VIP Card 2","status":0,"lat":25.280226762927116,"lng":121.39247262719789,"updated_at":"2013/11/21 14:55"},
-  {"id":2,"udid":10002,"name":"VIP Card 2","status":2,"lat":24.681226762927116,"lng":121.19231264148844,"updated_at":"2013/11/21 11:35"},
-  {"id":3,"udid":10003,"name":"VIP Card 2","status":2,"lat":24.989127676415467,"lng":121.20147262719789,"updated_at":"2013/11/21 09:25"},
-  {"id":4,"udid":10004,"name":"VIP Card 2","status":0,"lat":23.984110962927116,"lng":121.39247541111698,"updated_at":"2013/11/21 08:42"},
-  {"id":5,"udid":10005,"name":"VIP Card 2","status":0,"lat":23.840110962927122,"lng":121.16247541111698,"updated_at":"2013/11/21 14:42"}
+  {"id":1,"udid":10001,"name":"VIP Card 2","read_count":3,"unread_count":6,"lat":25.280226762927116,"lng":121.39247262719789,"updated_at":"2013/11/21 14:55"},
+  {"id":2,"udid":10002,"name":"VIP Card 2","read_count":6,"unread_count":11,"lat":24.681226762927116,"lng":121.19231264148844,"updated_at":"2013/11/21 11:35"},
+  {"id":3,"udid":10003,"name":"VIP Card 2","read_count":6,"unread_count":8,"lat":24.989127676415467,"lng":121.20147262719789,"updated_at":"2013/11/21 09:25"},
+  {"id":4,"udid":10004,"name":"VIP Card 2","read_count":8,"unread_count":0,"lat":23.984110962927116,"lng":121.39247541111698,"updated_at":"2013/11/21 08:42"},
+  {"id":5,"udid":10005,"name":"VIP Card 2","read_count":0,"unread_count":14,"lat":23.840110962927122,"lng":121.16247541111698,"updated_at":"2013/11/21 14:42"}
 ]
