@@ -56,16 +56,16 @@ require([
     'backbone',
     'bootstrap_tab',
     'async',
+    'pace',
     'routers/router'
-], function (Backbone, BootstrapTab, Async, Router) {
+], function (Backbone, BootstrapTab, Async, Pace, Router) {
+
+    Pace.start({
+        target: '.progress-wrapper'
+    });
+
     Backbone.history.start();
     
     // Initialize the router
     new Router();
-});
-
-require(['pace'], function (Pace) {
-    Pace.start({
-        target: '.progress-wrapper'
-    });
 });
