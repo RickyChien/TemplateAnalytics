@@ -13,8 +13,8 @@ define([
             this.setLogsUrl('scripts/api/banners/' + this.id + '.json');
 
             this.set('key', 'name');
-            this.set('rate', (this.get('click_count') / (this.get('click_count') +
-                this.get('view_count')) * 100).toFixed(2) + ' %');
+            this.set('rate', (this.get('click_count') / ((this.get('click_count') +
+                this.get('view_count')) || 1) * 100).toFixed(2) + ' %');
         }
 
     });
