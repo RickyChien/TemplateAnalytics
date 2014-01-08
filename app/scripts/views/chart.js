@@ -1,8 +1,8 @@
-define(function (require) {
+define([
+    'underscore',
+    'backbone'
+], function (_, Backbone) {
     'use strict';
-
-    var Underscore = require('underscore'),
-        Backbone = require('backbone');
 
     var ChartView = Backbone.View.extend({
 
