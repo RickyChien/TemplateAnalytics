@@ -56,13 +56,14 @@ define(function (require) {
             var self = this;
 
             // Load script on demand
-            require(['highcharts'], function () {
+            require(['highcharts'], function (Highcharts) {
+                Highcharts.setOptions({
+                    global: {
+                        useUTC: false
+                    }
+                });
                 self.collection.updateChart();
             });
-        },
-
-        changeLineChart: function () {
-            console.log('test')
         }
 
     });
