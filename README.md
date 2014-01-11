@@ -1,6 +1,6 @@
-# TemplateAnalytics
+# Ads Analysis
 
-A data analytics front-end website.
+A front-end website for tracking advertisement data.
 
 ## How to build and develop
 
