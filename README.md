@@ -74,7 +74,7 @@ Go to check Gruntfile.js for commands detials such as server, test and build...e
 [BackboneJS]:http://backbonejs.org/
 [RequireJS]:http://requirejs.org/
 [Bootstrap]:http://getbootstrap.com/
-[Highcharts]:http://www.highcharts.com/‎
+[Highcharts]:http://www.highcharts.com/
 [Gmap3]:http://gmap3.net/
 [jQuery]:http://jquery.com/
 [Pace]:http://github.hubspot.com/pace/docs/welcome/
