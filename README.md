@@ -8,16 +8,13 @@ A front-end website for tracking advertisement data.
 
 2. Install [Yeoman] globally
 
-
         sudo npm install -g yo
-
 
 3. Clone this repository into your working directory
 
-4. Change directory to TemplateAnalytics
+4. Change directory to ads-analysis
 
-        cd TemplateAnalytics
-
+        cd ads-analysis
 
 5. Install npm packeages and bower libraries
 
@@ -33,19 +30,17 @@ A front-end website for tracking advertisement data.
 
         grunt server
 
-
 Go to check Gruntfile.js for commands detials such as server, test and build...etc.
-
 
 ## This project used
 
 * [Yeoman] : Modern workflows web application.
  
-  * [Yo] : Scaffolds out a new application.
+    * [Yo] : Scaffolds out a new application.
 
-  * [Grunt] : Build, preview and test your project.
+    * [Grunt] : Build, preview and test your project.
 
-  * [Bower] : Javascript libraries dependency management.
+    * [Bower] : Javascript libraries dependency management.
 
 * [BackboneJS] : MV* structure web application.
 
@@ -60,7 +55,6 @@ Go to check Gruntfile.js for commands detials such as server, test and build...e
 * [jQuery] : The write less, do more, javaScript library.
 
 * [Pace] : Automatic page load progress bars.
-
 
 [Node.js]:http://nodejs.org/
 [NPM]:https://npmjs.org/
