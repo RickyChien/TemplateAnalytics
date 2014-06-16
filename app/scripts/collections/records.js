@@ -32,6 +32,9 @@ define([
                     chart: {
                         type: 'column'
                     },
+                    credits: {
+                        enabled: false
+                    },
                     title: {
                         text: 'Column Chart'
                     },
@@ -89,6 +92,9 @@ define([
                     option = {
                         chart: {
                             type: 'line'
+                        },
+                        credits: {
+                            enabled: false
                         },
                         title: {
                             text: 'Line Chart'
