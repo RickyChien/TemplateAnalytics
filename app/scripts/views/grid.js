@@ -32,8 +32,8 @@ define([
         },
 
         parse: function (attrs, skips) {
-            var data = [],
-                index;
+            var data = [];
+
             for (var attr in attrs) {
                 if (!_.contains(skips, attr)) {
                     if (attr !== 'created_at') {

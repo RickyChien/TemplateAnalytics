@@ -3,18 +3,18 @@ define([
     'backbone',
     'colors',
     'models/record'
-], function (_, Backbone, Colors, Record) {
+], function(_, Backbone, Colors, Record) {
     'use strict';
 
     var Records = Backbone.Collection.extend({
 
         model: Record,
 
-        initialize: function () {
+        initialize: function() {
             this.colors = new Colors();
         },
 
-        updateChart: function () {
+        updateChart: function() {
             var options = [];
 
             this.columnChartOptions = this.updateColumnChart();
@@ -27,7 +27,7 @@ define([
             return options;
         },
 
-        updateColumnChart: function () {
+        updateColumnChart: function() {
             var options = {
                     chart: {
                         type: 'column'
@@ -44,7 +44,7 @@ define([
                     yAxis: {
                         min: 0,
                         title: {
-                          text: 'Total quantity'
+                            text: 'Total quantity'
                         }
                     },
                     tooltip: {
@@ -64,18 +64,20 @@ define([
             for (var attr in this.models[0].attributes) {
                 if (attr.indexOf('_count') !== -1) {
                     series.push({
-                        name: attr[0].toUpperCase() + attr.substring(1, attr.indexOf('_count')),
+                        name: attr[0].toUpperCase() + attr.substring(1,
+                            attr.indexOf('_count')),
                         data: []
                     });
                 }
             }
 
-            this.each(function (record) {
+            this.each(function(record) {
                 if (record.get('selected')) {
                     options.xAxis.categories.push('ID ' + record.id);
-                    series.forEach(function (seriesItem) {
+                    series.forEach(function(seriesItem) {
                         var name = seriesItem.name;
-                        seriesItem.data.push(record.get(name[0].toLowerCase() + name.slice(1) + '_count'));
+                        seriesItem.data.push(record.get(name[0].toLowerCase() +
+                            name.slice(1) + '_count'));
                     });
                 }
             });
@@ -83,7 +85,7 @@ define([
             return options;
         },
 
-        updateLineChart: function () {
+        updateLineChart: function() {
             var options = [],
                 option;
 
@@ -104,7 +106,8 @@ define([
                         },
                         yAxis: {
                             title: {
-                                text: attr[0].toUpperCase() + attr.substring(1, attr.indexOf('_count')) + 's'
+                                text: attr[0].toUpperCase() + attr.substring(1,
+                                    attr.indexOf('_count')) + 's'
                             },
                             plotLines: [{
                                 value: 0,
@@ -118,13 +121,13 @@ define([
                         series: []
                     };
 
-                    this.each(function (record) {
+                    this.each(function(record) {
                         if (record.get('selected')) {
                             var values = {},
                                 seriesData = [],
                                 date;
 
-                            record.get('logs').each(function (log) {
+                            record.get('logs').each(function(log) {
                                 date = new Date(log.get('updated_at'));
                                 date = date.toString().substring(0, 18) + ':00';
 
@@ -151,13 +154,13 @@ define([
             return options;
         },
 
-        updateMap: function () {
+        updateMap: function() {
             var clusters = [],
                 self = this;
 
             this.colors.count = 0;
 
-            this.each(function (record) {
+            this.each(function(record) {
                 if (record.get('selected')) {
                     // Generate random location for demo
                     (function() {
@@ -167,15 +170,19 @@ define([
                             max = 1.5;
 
                         record.get('logs').each(function(log) {
-                            log.set({ lat: (lat + Math.random() * (max - min) + min) });
-                            log.set({ lng: (lng + Math.random() * (max - min) + min) });
+                            log.set({
+                                lat: (lat + Math.random() * (max - min) + min)
+                            });
+                            log.set({
+                                lng: (lng + Math.random() * (max - min) + min)
+                            });
                         });
                     })();
 
                     var markers = [],
                         color = self.colors.getColor();
 
-                    markers = record.get('logs').map(function (log) {
+                    markers = record.get('logs').map(function(log) {
                         return {
                             data: record.get(record.get('key')),
                             latLng: [log.get('lat'), log.get('lng')]

@@ -54,27 +54,27 @@ define([
                                 infowindow.setContent(context.data);
                             },
                             mouseout: function () {
-                                var infowindow = self.$map.gmap3({ get: { name: "infowindow" } });
+                                var infowindow = self.$map.gmap3({ get: { name: 'infowindow' } });
                                 infowindow.close();
                             }
                         },
                         cluster: {
                             radius: 300,
                             0: {
-                                content: "<div class='cluster cluster-s' style='background: " +
-                                    cluster.color + "''>CLUSTER_COUNT</div>",
+                                content: '<div class="cluster cluster-s" style="background: ' +
+                                    cluster.color + '">CLUSTER_COUNT</div>',
                                 width: 50,
                                 height: 50
                             },
                             5: {
-                                content: "<div class='cluster cluster-m' style='background: " +
-                                    cluster.color + "''>CLUSTER_COUNT</div>",
+                                content: '<div class="cluster cluster-m" style="background: ' +
+                                    cluster.color + '">CLUSTER_COUNT</div>',
                                 width: 80,
                                 height: 80
                             },
                             10: {
-                                content: "<div class='cluster cluster-l' style='background: " +
-                                    cluster.color + "''>CLUSTER_COUNT</div>",
+                                content: '<div class="cluster cluster-l" style="background: ' +
+                                    cluster.color + '">CLUSTER_COUNT</div>',
                                 width: 110,
                                 height: 110
                             },

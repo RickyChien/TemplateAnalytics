@@ -29,8 +29,8 @@ require.config({
             deps: ['jquery', 'jquery_ui', 'jquery_ui_slider']
         },
         highcharts: {
-            deps: ["jquery"],
-            exports: "Highcharts"
+            deps: ['jquery'],
+            exports: 'Highcharts'
         },
         gmap3: {
             deps: ['jquery', 'async!http://maps.google.com/maps/api/js?v=3&sensor=false']
